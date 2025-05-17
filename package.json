@@ -1,0 +1,41 @@
+{
+  "name": "@sciux/monorepo",
+  "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "packageManager": "pnpm@10.4.0",
+  "scripts": {
+    "build": "nr -r build",
+    "dev": "nr -r dev",
+    "lint": "eslint --cache .",
+    "prepublishOnly": "nr build",
+    "docs": "pnpm -C docs run docs:dev",
+    "docs:build": "pnpm -C docs run docs:build",
+    "release": "bumpp -r && pnpm -r publish",
+    "test": "vitest",
+    "typecheck": "tsc --noEmit",
+    "prepare": "simple-git-hooks"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "catalog:",
+    "@antfu/ni": "catalog:",
+    "@antfu/utils": "catalog:",
+    "@types/node": "catalog:",
+    "bumpp": "catalog:",
+    "eslint": "catalog:",
+    "lint-staged": "catalog:",
+    "pnpm": "catalog:",
+    "simple-git-hooks": "catalog:",
+    "tsx": "catalog:",
+    "typescript": "catalog:",
+    "unbuild": "catalog:",
+    "vite": "catalog:",
+    "vitest": "catalog:"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint-staged"
+  },
+  "lint-staged": {
+    "*": "eslint --fix"
+  }
+}

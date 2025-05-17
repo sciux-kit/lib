@@ -1,0 +1,33 @@
+{
+  "name": "@sciux/layout",
+  "type": "module",
+  "version": "0.0.0",
+  "description": "Layout components for SciuxKit",
+  "author": "BijonAI <info@bijon.ai>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bijonai/lib.git"
+  },
+  "bugs": "https://github.com/bijonai/lib/issues",
+  "keywords": [],
+  "exports": {
+    ".": "./dist/index.mjs"
+  },
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "unbuild",
+    "dev": "unbuild --stub",
+    "prepublishOnly": "nr build",
+    "start": "tsx src/index.ts"
+  },
+  "dependencies": {
+    "arktype": "^2.1.20",
+    "sciux-laplace": "catalog:"
+  }
+}
