@@ -6,7 +6,7 @@ const T = type({
 })
 
 export default defineComponent<'align', typeof T.infer>(
-  (context, attrs) => {
+  (attrs, _context) => {
     return {
       name: 'align',
       attrs: T,
@@ -16,8 +16,6 @@ export default defineComponent<'align', typeof T.infer>(
         element.style.alignItems = attrs.type.value
         return element
       },
-      provides: {},
-      globals: {},
     }
   },
 )
