@@ -12,7 +12,10 @@
   "bugs": "https://github.com/bijonai/lib/issues",
   "keywords": [],
   "exports": {
-    ".": "./dist/index.mjs"
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./src/index.ts"
+    }
   },
   "main": "./dist/index.mjs",
   "module": "./dist/index.mjs",
@@ -21,8 +24,8 @@
     "dist"
   ],
   "scripts": {
-    "build": "unbuild",
-    "dev": "unbuild --stub",
+    "build": "tsup",
+    "dev": "tsup --watch",
     "prepublishOnly": "nr build",
     "start": "tsx src/index.ts"
   },

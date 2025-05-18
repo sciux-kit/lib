@@ -1,4 +1,4 @@
-import type { Context, defineComponent } from 'sciux-laplace'
+import { type Context, defineComponent } from 'sciux-laplace'
 
 import { toValue } from '@vue/reactivity'
 import { type } from 'arktype'
