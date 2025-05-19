@@ -1,4 +1,5 @@
-import { toValue } from '@vue/reactivity'
+import type { Ref } from '@vue/reactivity'
+import { ref, toValue } from '@vue/reactivity'
 import { type } from 'arktype'
 import { defineComponent } from 'sciux-laplace'
 import block, { BlockType } from './block'
@@ -16,8 +17,9 @@ export const FlexboxType = type({
   basis: `string | number`,
 }).partial().and(BlockType)
 
-export default defineComponent<'flexbox', typeof FlexboxType.infer>((attrs, _context) => {
-  const extend = block(attrs, _context)
+export default defineComponent<'flexbox', typeof FlexboxType.infer, { direction: Ref<'row' | 'column'> }>((attrs, context) => {
+  const extend = block(attrs, context)
+  const direction = ref(toValue(attrs.direction ?? 'row') as string)
 
   return {
     name: 'flexbox',
@@ -26,9 +28,13 @@ export default defineComponent<'flexbox', typeof FlexboxType.infer>((attrs, _con
       const element = extend.setup!(children) as HTMLDivElement
 
       element.style.display = 'flex'
-      element.style.width = '100%'
-      element.style.height = '100%'
-      element.style.flexDirection = toValue(attrs.direction ?? 'auto') as string
+
+      if (context.direction.value === 'row')
+        element.style.width = '100%'
+      if (context.direction.value === 'column')
+        element.style.height = '100%'
+      element.style.flexDirection = toValue(attrs.direction ?? 'row') as string
+      direction.value = toValue(attrs.direction ?? 'row') as string
       element.style.justifyContent = toValue(attrs.justify ?? 'auto') as string
       element.style.alignItems = toValue(attrs.align ?? 'auto') as string
       element.style.gap = size(toValue(attrs.gap ?? 'auto') as string)
@@ -37,6 +43,9 @@ export default defineComponent<'flexbox', typeof FlexboxType.infer>((attrs, _con
       element.style.flexShrink = (toValue(attrs.shrink) ?? 0).toString()
       element.style.flexBasis = size(toValue(attrs.basis ?? 'auto') as string)
       return element
+    },
+    provides: {
+      direction,
     },
   }
 })

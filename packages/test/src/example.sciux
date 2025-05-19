@@ -1,4 +1,8 @@
-<flexbox direction="column">
-  <flexbox direction="row">1</flexbox>
-  <flexbox direction="row">2</flexbox>
-</flexbox>
+<columns>
+  <flexbox>1</flexbox>
+  <flexbox>1</flexbox>
+  <rows>
+    <flexbox>1</flexbox>
+    <flexbox>1</flexbox>
+  </rows>
+</columns>
