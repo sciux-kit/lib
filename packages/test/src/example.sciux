@@ -1,1 +1,4 @@
-<block></block>
+<flexbox direction="column">
+  <flexbox direction="row">1</flexbox>
+  <flexbox direction="row">2</flexbox>
+</flexbox>

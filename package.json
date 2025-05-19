@@ -14,7 +14,8 @@
     "release": "bumpp -r && pnpm -r publish",
     "test": "vitest",
     "typecheck": "tsc --noEmit",
-    "prepare": "simple-git-hooks"
+    "prepare": "simple-git-hooks",
+    "preview": "pnpm vite packages/test"
   },
   "devDependencies": {
     "@antfu/eslint-config": "catalog:",

@@ -4,7 +4,7 @@ import { defineComponent } from 'sciux-laplace'
 import { AlignType } from './align'
 import { size } from './utils/size'
 
-const T = type({
+export const BlockType = type({
   'margin': 'string | number',
   'margin-top': 'string | number',
   'margin-right': 'string | number',
@@ -18,10 +18,10 @@ const T = type({
   'align': AlignType,
 }).partial()
 
-export default defineComponent<'block', typeof T.infer>((attrs, _context) => {
+export default defineComponent<'block', typeof BlockType.infer>((attrs, _context) => {
   return {
     name: 'block',
-    attrs: T,
+    attrs: BlockType,
     setup: (children) => {
       const element = document.createElement('div')
       element.style.margin = size(toValue(attrs.margin ?? '0') as string)
