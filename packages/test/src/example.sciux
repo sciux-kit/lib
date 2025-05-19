@@ -1,8 +1,12 @@
 <columns>
+  <let :value="2" />
   <flexbox>1</flexbox>
-  <flexbox>1</flexbox>
+  <flexbox>{{ value }}</flexbox>
   <rows>
     <flexbox>1</flexbox>
     <flexbox>1</flexbox>
+    <flexbox>
+      <input model="value"/>
+    </flexbox>
   </rows>
 </columns>

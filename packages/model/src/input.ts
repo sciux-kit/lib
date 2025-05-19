@@ -1,7 +1,9 @@
-import { type Context, defineComponent } from 'sciux-laplace'
+import type { Ref } from '@vue/reactivity'
+import type { Context } from 'sciux-laplace'
 
 import { toValue } from '@vue/reactivity'
 import { type } from 'arktype'
+import { defineComponent } from 'sciux-laplace'
 
 const T = type({
   model: 'string',
@@ -13,7 +15,7 @@ export default defineComponent<'input', typeof T.infer, Context>((attrs, context
   const input = document.createElement('input')
   if (attrs.model) {
     input.addEventListener('input', (e) => {
-      context[attrs.model!.value!] = (e.target as HTMLInputElement).value
+      (context[attrs.model!.value!] as Ref<string>).value = (e.target as HTMLInputElement).value
     })
   }
   return {

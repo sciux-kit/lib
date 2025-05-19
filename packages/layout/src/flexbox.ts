@@ -20,6 +20,7 @@ export const FlexboxType = type({
 export default defineComponent<'flexbox', typeof FlexboxType.infer, { direction: Ref<'row' | 'column'> }>((attrs, context) => {
   const extend = block(attrs, context)
   const direction = ref(toValue(attrs.direction ?? 'row') as string)
+  const selfDirection = context.direction.value
 
   return {
     name: 'flexbox',
@@ -29,9 +30,9 @@ export default defineComponent<'flexbox', typeof FlexboxType.infer, { direction:
 
       element.style.display = 'flex'
 
-      if (context.direction.value === 'row')
+      if (selfDirection === 'row')
         element.style.width = '100%'
-      if (context.direction.value === 'column')
+      if (selfDirection === 'column')
         element.style.height = '100%'
       element.style.flexDirection = toValue(attrs.direction ?? 'row') as string
       direction.value = toValue(attrs.direction ?? 'row') as string
