@@ -220,6 +220,21 @@ importers:
         specifier: ^6.3.5
         version: 6.3.5(@types/node@22.13.4)(jiti@2.4.2)(tsx@4.19.2)(yaml@2.8.0)
 
+  packages/widget:
+    dependencies:
+      '@sciux/layout':
+        specifier: workspace:^
+        version: link:../layout
+      '@vue/reactivity':
+        specifier: ^3.5.14
+        version: 3.5.14
+      arktype:
+        specifier: ^2.1.20
+        version: 2.1.20
+      sciux-laplace:
+        specifier: latest
+        version: 0.0.1-alpha.4
+
 packages:
 
   '@algolia/autocomplete-core@1.17.9':
