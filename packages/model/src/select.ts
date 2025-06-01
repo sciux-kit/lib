@@ -1,11 +1,11 @@
-import { type } from "arktype"
+import { type } from 'arktype'
 
-const SelectType = type({
+export const SelectType = type({
   model: 'string',
-}).partial()
+})
 
-const SelectOptionType = type({
+export const SelectOptionType = type({
   value: 'string',
   selected: 'boolean',
   disabled: 'boolean',
-}).partial()
+})

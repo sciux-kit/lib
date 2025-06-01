@@ -8,14 +8,14 @@ import { size } from './utils/size'
 const Position = type(`'start' | 'end' | 'center'`)
 export const FlexboxType = type({
   direction: `'row' | 'column'`,
-  justify: Position,
-  align: Position,
-  gap: `string | number`,
+  justify: Position.optional(),
+  align: Position.optional(),
+  gap: type(`string | number`).optional(),
   wrap: `'nowrap' | 'wrap' | 'wrap-reverse'`,
   grow: `number`,
   shrink: `number`,
-  basis: `string | number`,
-}).partial().and(BlockType)
+  basis: type(`string | number`).optional(),
+}).and(BlockType)
 
 export default defineComponent<'flexbox', typeof FlexboxType.infer, { direction: Ref<'row' | 'column'> }>((attrs, context) => {
   const extend = block(attrs, context)
@@ -25,6 +25,12 @@ export default defineComponent<'flexbox', typeof FlexboxType.infer, { direction:
   return {
     name: 'flexbox',
     attrs: FlexboxType,
+    defaults: {
+      direction: 'row',
+      wrap: 'nowrap',
+      grow: 1,
+      shrink: 0,
+    },
     setup: (children) => {
       const element = extend.setup!(children) as HTMLDivElement
 
@@ -34,15 +40,15 @@ export default defineComponent<'flexbox', typeof FlexboxType.infer, { direction:
         element.style.width = '100%'
       if (selfDirection === 'column')
         element.style.height = '100%'
-      element.style.flexDirection = toValue(attrs.direction ?? 'row') as string
-      direction.value = toValue(attrs.direction ?? 'row') as string
-      element.style.justifyContent = toValue(attrs.justify ?? 'auto') as string
-      element.style.alignItems = toValue(attrs.align ?? 'auto') as string
-      element.style.gap = size(toValue(attrs.gap ?? 'auto') as string)
-      element.style.flexWrap = toValue(attrs.wrap ?? 'nowrap') as string
+      element.style.flexDirection = toValue(attrs.direction)
+      direction.value = toValue(attrs.direction)
+      element.style.justifyContent = toValue(attrs.justify ?? 'auto')!
+      element.style.alignItems = toValue(attrs.align ?? 'auto')!
+      element.style.gap = size(toValue(attrs.gap) ?? 'auto')
+      element.style.flexWrap = toValue(attrs.wrap)
       element.style.flexGrow = (toValue(attrs.grow) ?? 1).toString()
       element.style.flexShrink = (toValue(attrs.shrink) ?? 0).toString()
-      element.style.flexBasis = size(toValue(attrs.basis ?? 'auto') as string)
+      element.style.flexBasis = size(toValue(attrs.basis) ?? 'auto')
       return element
     },
     provides: {

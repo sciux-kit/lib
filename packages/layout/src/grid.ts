@@ -12,22 +12,31 @@ const T = type({
   'row-gutter': `string | number`,
   'align': AlignType,
   'inset': `string | number`,
-}).partial()
+})
 
 export default defineComponent<'grid', typeof T.infer>((attrs, _context) => {
   return {
     name: 'grid',
     attrs: T,
+    defaults: {
+      'columns': '1fr',
+      'rows': '1fr',
+      'gutter': '0',
+      'column-gutter': '0',
+      'row-gutter': '0',
+      'align': 'start',
+      'inset': '0',
+    },
     setup: (children) => {
       const element = document.createElement('div')
       element.style.display = 'grid'
-      element.style.gridTemplateColumns = toValue(attrs.columns ?? '') as string
-      element.style.gridTemplateRows = toValue(attrs.rows ?? '') as string
-      element.style.gap = size(toValue(attrs.gutter ?? '0') as string)
-      element.style.columnGap = size(toValue(attrs['column-gutter'] ?? '0') as string)
-      element.style.rowGap = size(toValue(attrs['row-gutter'] ?? '0') as string)
-      element.style.justifyContent = toValue(attrs.align ?? 'start') as string
-      element.style.inset = size(toValue(attrs.inset ?? '0') as string)
+      element.style.gridTemplateColumns = toValue(attrs.columns) as string
+      element.style.gridTemplateRows = toValue(attrs.rows) as string
+      element.style.gap = size(toValue(attrs.gutter))
+      element.style.columnGap = size(toValue(attrs['column-gutter']))
+      element.style.rowGap = size(toValue(attrs['row-gutter']))
+      element.style.justifyContent = toValue(attrs.align) as string
+      element.style.inset = size(toValue(attrs.inset))
       element.append(...children())
       return element
     },
