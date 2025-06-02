@@ -1,3 +1,16 @@
+/**
+ * `<table>` component examples
+ * ```
+ * <table caption="The table description" align="horizon" :columns="3">
+ *  <link>a link could be a part of item</link>
+ *  <canvas></canvas> // A canvas also could
+ *  Hello world! // A pure-text node also
+ *  // Auto enter to next table line because the max columns is `3`
+ *  <each-node-can-be/>
+ * </table>
+ * ```
+ */
+
 import { size } from '@sciux/layout'
 import { type } from 'arktype'
 import { defineComponent, toValue } from 'sciux-laplace'
