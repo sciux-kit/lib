@@ -209,6 +209,9 @@ importers:
       '@sciux/model':
         specifier: workspace:^
         version: link:../model
+      '@sciux/widget':
+        specifier: workspace:^
+        version: link:../widget
       sciux-laplace:
         specifier: 'catalog:'
         version: 0.0.1-alpha.7

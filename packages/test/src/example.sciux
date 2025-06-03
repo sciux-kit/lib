@@ -1,3 +1,4 @@
+<!--
 <columns>
   <let :value="2" />
   <flexbox>1</flexbox>
@@ -10,3 +11,23 @@
     </flexbox>
   </rows>
 </columns>
+-->
+<!-- 测试水平布局表格 -->
+<table caption="水平布局测试" align="horizon" columns="3">
+  <block>1</block>
+  <block>2</block>
+  <block>3</block>
+  <block>4</block>
+  <block>5</block>
+  <block>6</block>
+</table>
+
+<!-- 测试垂直布局表格 -->
+<table caption="垂直布局测试" align="vertical" rows="3">
+  <block>A1</block>
+  <block>A2</block>
+  <block>A3</block>
+  <block>B1</block>
+  <block>B2</block>
+  <block>B3</block>
+</table>
