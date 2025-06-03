@@ -1,12 +1,15 @@
 <columns>
   <let :value="2" />
+  <let :checked="false" />
   <flexbox>1</flexbox>
   <flexbox>{{ value }}</flexbox>
+  <flexbox>{{ checked }}</flexbox>
   <rows>
     <flexbox>1</flexbox>
     <flexbox>1</flexbox>
     <flexbox>
       <input model="value"/>
+      <checkbox model="checked"/>
     </flexbox>
   </rows>
 </columns>
