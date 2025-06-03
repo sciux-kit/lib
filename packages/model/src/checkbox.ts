@@ -10,7 +10,7 @@ const T = type({
   disabled: 'boolean',
 })
 
-export default defineComponent<'input', typeof T.infer, Context>((attrs, context) => {
+export default defineComponent<'checkbox', typeof T.infer, Context>((attrs, context) => {
   const input = document.createElement('input')
   input.type = 'checkbox'
   if (attrs.model) {
@@ -19,7 +19,7 @@ export default defineComponent<'input', typeof T.infer, Context>((attrs, context
     })
   }
   return {
-    name: 'input',
+    name: 'checkbox',
     attrs: T,
     setup: () => {
       input.disabled = toValue(attrs.disabled)

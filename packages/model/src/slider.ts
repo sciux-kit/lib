@@ -11,7 +11,7 @@ const T = type({
   disabled: 'boolean',
 })
 
-export default defineComponent<'input', typeof T.infer, Context>((attrs, context) => {
+export default defineComponent<'slider', typeof T.infer, Context>((attrs, context) => {
   const input = document.createElement('input')
   input.type = 'range'
   input.min = '0'
@@ -23,7 +23,7 @@ export default defineComponent<'input', typeof T.infer, Context>((attrs, context
     })
   }
   return {
-    name: 'input',
+    name: 'slider',
     attrs: T,
     setup: () => {
       input.defaultValue = toValue(attrs.defaultValue).toString()
