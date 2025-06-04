@@ -33,6 +33,7 @@
     "@sciux/layout": "workspace:^",
     "@vue/reactivity": "^3.5.14",
     "arktype": "^2.1.20",
-    "sciux-laplace": "latest"
+    "sciux-laplace": "latest",
+    "shiki": "^3.4.2"
   }
 }

@@ -5,7 +5,9 @@
   <flexbox>{{ value }}</flexbox>
   <flexbox>{{ checked }}</flexbox>
   <rows>
-    <flexbox>1</flexbox>
+    <flexbox>
+      <code language="js">console.log('hello')</code>
+    </flexbox>
     <flexbox>1</flexbox>
     <flexbox>
       <input model="value"/>
@@ -20,8 +22,7 @@
   <block>2</block>
   <block>3</block>
   <block>4</block>
-  <block>5</block>
-  <block>6</block>
+  <canvas :width="100" :height="200"></canvas>
 </table>
 
 <!-- 测试垂直布局表格 -->
