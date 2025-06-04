@@ -1,8 +1,8 @@
 {
-  "name": "@sciux/model",
+  "name": "sciux",
   "type": "module",
   "version": "0.0.0",
-  "description": "Model components for SciuxKit",
+  "description": "Sciux library composed package.",
   "author": "BijonAI <info@bijon.ai>",
   "license": "MIT",
   "repository": {
@@ -30,8 +30,9 @@
     "start": "tsx src/index.ts"
   },
   "dependencies": {
-    "@vue/reactivity": "^3.5.14",
-    "arktype": "^2.1.20",
+    "@sciux/layout": "workspace:*",
+    "@sciux/model": "workspace:*",
+    "@sciux/widget": "workspace:*",
     "sciux-laplace": "latest"
   }
 }

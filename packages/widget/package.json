@@ -7,9 +7,9 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bijonai/lib.git"
+    "url": "git+https://github.com/sciux-kit/lib.git"
   },
-  "bugs": "https://github.com/bijonai/lib/issues",
+  "bugs": "https://github.com/sciux-kit/lib/issues",
   "keywords": [],
   "exports": {
     ".": {

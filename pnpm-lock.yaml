@@ -201,6 +201,21 @@ importers:
         specifier: latest
         version: 0.0.1-alpha.8
 
+  packages/sciux:
+    dependencies:
+      '@sciux/layout':
+        specifier: workspace:*
+        version: link:../layout
+      '@sciux/model':
+        specifier: workspace:*
+        version: link:../model
+      '@sciux/widget':
+        specifier: workspace:*
+        version: link:../widget
+      sciux-laplace:
+        specifier: latest
+        version: 0.0.1-alpha.8
+
   packages/test:
     dependencies:
       '@sciux/layout':
