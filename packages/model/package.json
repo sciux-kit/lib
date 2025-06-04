@@ -1,7 +1,7 @@
 {
   "name": "@sciux/model",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Model components for SciuxKit",
   "author": "BijonAI <info@bijon.ai>",
   "license": "MIT",
