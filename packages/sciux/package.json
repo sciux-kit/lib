@@ -33,6 +33,6 @@
     "@sciux/layout": "workspace:*",
     "@sciux/model": "workspace:*",
     "@sciux/widget": "workspace:*",
-    "sciux-laplace": "latest"
+    "sciux-laplace": "catalog:"
   }
 }

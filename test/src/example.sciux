@@ -6,7 +6,7 @@
   <flexbox>{{ checked }}</flexbox>
   <rows>
     <flexbox>
-      <code language="js">console.log('hello')</code>
+      <code language="js">
     </flexbox>
     <flexbox>1</flexbox>
     <flexbox>
