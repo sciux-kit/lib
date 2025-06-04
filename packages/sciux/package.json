@@ -1,7 +1,7 @@
 {
   "name": "sciux",
   "type": "module",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Sciux library composed package.",
   "author": "BijonAI <info@bijon.ai>",
   "license": "MIT",

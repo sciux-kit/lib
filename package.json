@@ -1,7 +1,7 @@
 {
   "name": "@sciux/monorepo",
   "type": "module",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": true,
   "packageManager": "pnpm@10.4.0",
   "scripts": {
@@ -15,7 +15,7 @@
     "test": "vitest",
     "typecheck": "tsc --noEmit",
     "prepare": "simple-git-hooks",
-    "preview": "pnpm vite packages/test"
+    "preview": "pnpm vite ./test"
   },
   "devDependencies": {
     "@antfu/eslint-config": "catalog:",
