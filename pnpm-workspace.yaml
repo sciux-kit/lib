@@ -3,6 +3,7 @@ packages:
   - docs
   - packages/*
   - examples/*
+  - test
 catalog:
   '@antfu/eslint-config': ^4.2.1
   '@antfu/ni': ^23.3.1
