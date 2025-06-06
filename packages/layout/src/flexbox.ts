@@ -17,10 +17,10 @@ export const FlexboxType = type({
   basis: type(`string | number`).optional(),
 }).and(BlockType)
 
-export default defineComponent<'flexbox', typeof FlexboxType.infer, { direction: Ref<'row' | 'column'> }>((attrs, context) => {
+export default defineComponent<'flexbox', typeof FlexboxType.infer, { direction?: Ref<'row' | 'column'> }>((attrs, context) => {
   const extend = block(attrs, context)
   const direction = ref(toValue(attrs.direction ?? 'row') as string)
-  const selfDirection = context.direction.value
+  const selfDirection = context.direction?.value
 
   return {
     name: 'flexbox',

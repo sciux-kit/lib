@@ -7,7 +7,7 @@ const T = type({
 
 }).partial().and(FlexboxType)
 
-export default defineComponent<'rows', typeof T.infer, { direction: Ref<'row' | 'column'> }>((attrs, context) => {
+export default defineComponent<'rows', typeof T.infer, { direction?: Ref<'row' | 'column'> }>((attrs, context) => {
   const direction = ref(toValue(attrs.direction ?? 'row') as string)
   return {
     name: 'rows',
