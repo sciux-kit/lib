@@ -1,4 +1,5 @@
 export { default as button } from './button'
 export { default as checkbox } from './checkbox'
 export { default as input } from './input'
+export { default as radio } from './radio'
 export { default as slider } from './slider'
