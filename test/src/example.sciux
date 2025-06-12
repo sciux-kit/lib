@@ -2,7 +2,7 @@
   <let :value="2" />
   <let :checked="false" />
   <flexbox>1</flexbox>
-  <flexbox>{{ value }}</flexbox>
+  <flexbox #animate:click="value(100),1000">{{ value }}</flexbox>
   <flexbox>{{ checked }}</flexbox>
   <rows>
     <flexbox>
