@@ -1,4 +1,4 @@
-<columns>
+<columns padding-bottom="10px">
   <let :value="2" />
   <let :checked="false" />
   <flexbox>1</flexbox>
@@ -6,7 +6,7 @@
   <flexbox>{{ checked }}</flexbox>
   <rows>
     <flexbox>
-      <code language="js">
+      <code language="js">xxx</code>
     </flexbox>
     <flexbox>1</flexbox>
     <flexbox>

@@ -5,17 +5,17 @@ import { AlignType } from './align'
 import { size } from './utils/size'
 
 export const BlockType = type({
-  'margin': 'string | number',
-  'margin-top': 'string | number',
-  'margin-right': 'string | number',
-  'margin-bottom': 'string | number',
-  'margin-left': 'string | number',
-  'padding': 'string | number',
-  'padding-top': 'string | number',
-  'padding-right': 'string | number',
-  'padding-bottom': 'string | number',
-  'padding-left': 'string | number',
-  'align': AlignType,
+  margin: 'string | number',
+  marginTop: 'string | number',
+  marginRight: 'string | number',
+  marginBottom: 'string | number',
+  marginLeft: 'string | number',
+  padding: 'string | number',
+  paddingTop: 'string | number',
+  paddingRight: 'string | number',
+  paddingBottom: 'string | number',
+  paddingLeft: 'string | number',
+  align: AlignType,
 })
 
 export default defineComponent<'block', typeof BlockType.infer>((attrs, _context) => {
@@ -38,15 +38,15 @@ export default defineComponent<'block', typeof BlockType.infer>((attrs, _context
     setup: (children) => {
       const element = document.createElement('div')
       element.style.margin = size(toValue(attrs.margin))
-      element.style.marginTop = size(toValue(attrs['margin-top']))
-      element.style.marginRight = size(toValue(attrs['margin-right']))
-      element.style.marginBottom = size(toValue(attrs['margin-bottom']))
-      element.style.marginLeft = size(toValue(attrs['margin-left']))
+      element.style.marginTop = size(toValue(attrs.marginTop))
+      element.style.marginRight = size(toValue(attrs.marginRight))
+      element.style.marginBottom = size(toValue(attrs.marginBottom))
+      element.style.marginLeft = size(toValue(attrs.marginLeft))
       element.style.padding = size(toValue(attrs.padding))
-      element.style.paddingTop = size(toValue(attrs['padding-top']))
-      element.style.paddingRight = size(toValue(attrs['padding-right']))
-      element.style.paddingBottom = size(toValue(attrs['padding-bottom']))
-      element.style.paddingLeft = size(toValue(attrs['padding-left']))
+      element.style.paddingTop = size(toValue(attrs.paddingTop))
+      element.style.paddingRight = size(toValue(attrs.paddingRight))
+      element.style.paddingBottom = size(toValue(attrs.paddingBottom))
+      element.style.paddingLeft = size(toValue(attrs.paddingLeft))
       element.style.alignItems = toValue(attrs.align)
       element.append(...children())
       return element
