@@ -8,8 +8,10 @@
   },
   "dependencies": {
     "@sciux/layout": "workspace:^",
+    "@sciux/math": "workspace:^",
     "@sciux/model": "workspace:^",
     "@sciux/widget": "workspace:^",
+    "sciux": "workspace:^",
     "sciux-laplace": "catalog:"
   },
   "devDependencies": {

@@ -189,7 +189,13 @@ importers:
         specifier: 'catalog:'
         version: 0.0.1-alpha.12
 
+<<<<<<< HEAD
   packages/layout copy:
+=======
+<<<<<<< Updated upstream
+=======
+  packages/math:
+>>>>>>> main
     dependencies:
       '@vue/reactivity':
         specifier: ^3.5.14
@@ -201,6 +207,10 @@ importers:
         specifier: 'catalog:'
         version: 0.0.1-alpha.12
 
+<<<<<<< HEAD
+=======
+>>>>>>> Stashed changes
+>>>>>>> main
   packages/model:
     dependencies:
       '@vue/reactivity':
@@ -218,6 +228,9 @@ importers:
       '@sciux/layout':
         specifier: workspace:*
         version: link:../layout
+      '@sciux/math':
+        specifier: workspace:*
+        version: link:../math
       '@sciux/model':
         specifier: workspace:*
         version: link:../model
@@ -251,12 +264,18 @@ importers:
       '@sciux/layout':
         specifier: workspace:^
         version: link:../packages/layout
+      '@sciux/math':
+        specifier: workspace:^
+        version: link:../packages/math
       '@sciux/model':
         specifier: workspace:^
         version: link:../packages/model
       '@sciux/widget':
         specifier: workspace:^
         version: link:../packages/widget
+      sciux:
+        specifier: workspace:^
+        version: link:../packages/sciux
       sciux-laplace:
         specifier: 'catalog:'
         version: 0.0.1-alpha.12
