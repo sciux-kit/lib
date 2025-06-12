@@ -1,0 +1,5 @@
+<flexbox>
+  <canvas :width="300" :height="240" :origin="[150, 120]">
+    <angle :x="0" :y="0" :start-angle="0" :end-angle="90"></angle>
+  </canvas>
+</flexbox>
