@@ -189,6 +189,18 @@ importers:
         specifier: 'catalog:'
         version: 0.0.1-alpha.12
 
+  packages/layout copy:
+    dependencies:
+      '@vue/reactivity':
+        specifier: ^3.5.14
+        version: 3.5.14
+      arktype:
+        specifier: ^2.1.20
+        version: 2.1.20
+      sciux-laplace:
+        specifier: 'catalog:'
+        version: 0.0.1-alpha.12
+
   packages/model:
     dependencies:
       '@vue/reactivity':
