@@ -1,6 +1,7 @@
 import { type } from 'arktype'
 import { defineComponent } from 'sciux-laplace'
 import { LineType } from '../shared'
+import { resolveDasharray } from '../utils/line'
 
 const T = type({
   x: 'number',
@@ -25,9 +26,9 @@ export const angle = defineComponent<'angle', typeof T.infer>((attrs) => {
       startSideType: 'solid',
       endSideType: 'solid',
     },
-    setup(_children) {
+    setup(children) {
       const container = document.createElementNS('http://www.w3.org/2000/svg', 'g')
-      container.setAttribute('transform', `translate(${attrs.x}, ${attrs.y})`)
+      container.setAttribute('transform', `translate(${attrs.x.value}, ${attrs.y.value})`)
       const resolve = (value: number, length: number): { x1: number, y1: number, x2: number, y2: number } => {
         const radian = value * Math.PI / 180
         return {
@@ -37,7 +38,6 @@ export const angle = defineComponent<'angle', typeof T.infer>((attrs) => {
           y2: length * Math.sin(radian),
         }
       }
-      const resolveDasharray = (type: typeof LineType.infer): string => type === 'dashed' ? '10 5' : type === 'dotted' ? '2 2' : '0'
       const startSide = resolve(attrs.from.value, attrs.startSide.value)
       const endSide = resolve(attrs.to.value, attrs.endSide.value)
       const startSideLine = document.createElementNS('http://www.w3.org/2000/svg', 'line')
@@ -57,11 +57,20 @@ export const angle = defineComponent<'angle', typeof T.infer>((attrs) => {
       endSideLine.setAttribute('stroke', 'black')
       endSideLine.setAttribute('stroke-width', '1')
       endSideLine.setAttribute('stroke-dasharray', resolveDasharray(attrs.endSideType.value))
+      container.append(endSideLine)
+      container.append(...children())
       return container
     },
     provides: {
       x: attrs.x,
       y: attrs.y,
+      from: attrs.from,
+      to: attrs.to,
+      startSide: attrs.startSide,
+      endSide: attrs.endSide,
     },
   }
 })
+
+export * from './arc'
+export * from './bouding'

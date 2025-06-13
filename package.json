@@ -6,7 +6,7 @@
   "packageManager": "pnpm@10.4.0",
   "scripts": {
     "build": "nr -r build",
-    "dev": "nr -r dev",
+    "dev": "nr --parallel dev",
     "lint": "eslint --cache .",
     "prepublishOnly": "nr build",
     "docs": "pnpm -C docs run docs:dev",

@@ -1,5 +1,8 @@
 <flexbox>
   <canvas :width="300" :height="240" :origin="[150, 120]">
-    <angle :x="0" :y="0" :start-angle="0" :end-angle="90"></angle>
+    <angle :x="0" :y="0" :from="0" :to="120" :start-side="100" :end-side="100">
+      <bounding type="dashed"/>
+      <arc type="dashed" value="120"/>
+    </angle>
   </canvas>
 </flexbox>
