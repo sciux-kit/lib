@@ -1,7 +1,7 @@
 <flexbox>
   <canvas :width="300" :height="240" :origin="[150, 120]">
     <angle :x="0" :y="0" :from="0" :to="120" :start-side="100" :end-side="100">
-      <bounding type="dashed"/>
+      <bounding type="dashed" value="120"/>
       <arc type="dashed" value="120"/>
     </angle>
   </canvas>

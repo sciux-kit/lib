@@ -30,6 +30,7 @@
     "start": "tsx src/index.ts"
   },
   "dependencies": {
+    "@sciux/widget": "workspace:^",
     "@vue/reactivity": "^3.5.14",
     "arktype": "^2.1.20",
     "sciux-laplace": "catalog:"

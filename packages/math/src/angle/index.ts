@@ -74,3 +74,4 @@ export const angle = defineComponent<'angle', typeof T.infer>((attrs) => {
 
 export * from './arc'
 export * from './bouding'
+export * from './points'
