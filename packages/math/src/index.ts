@@ -1,4 +1,5 @@
 export * from './angle'
+export * from './circle'
 export * from './figure'
 export * from './line'
 export * from './shared'
