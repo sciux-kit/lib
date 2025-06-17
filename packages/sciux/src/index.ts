@@ -1,12 +1,12 @@
 import type { RegisterContext } from './types'
-import { animations, components, flows, textModes } from 'sciux-laplace'
+import { animations, flows, root, textModes } from 'sciux-laplace'
 import layout from './layout'
 import math from './math'
 import model from './model'
 import widget from './widget'
 
 const defaultContext: RegisterContext = {
-  components,
+  root,
   flows,
   animations,
   textModes,

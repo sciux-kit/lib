@@ -3,6 +3,7 @@ import { defineComponent } from 'sciux-laplace'
 import { LineType } from '../shared'
 import { resolveDasharray } from '../utils/line'
 import { generateTexNode } from '../utils/tex'
+import { lineEndPoint, lineStartPoint } from './points'
 
 const T = type({
   from: [type.number, type.number],
@@ -12,11 +13,18 @@ const T = type({
 })
 
 export const line = defineComponent<'line', typeof T.infer>((attrs) => {
+  const space = new Map()
+  space.set('start-point', lineStartPoint)
+  space.set('end-point', lineEndPoint)
   return {
     name: 'line',
     defaults: {
       type: 'solid',
       value: '',
+    },
+    provides: {
+      from: attrs.from.value,
+      to: attrs.to.value,
     },
     attrs: T,
     setup(_children) {
@@ -36,5 +44,8 @@ export const line = defineComponent<'line', typeof T.infer>((attrs) => {
       container.append(path, texContainer)
       return container
     },
+    space,
   }
 })
+
+export * from './points'

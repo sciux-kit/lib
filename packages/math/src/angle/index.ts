@@ -2,6 +2,9 @@ import { type } from 'arktype'
 import { defineComponent } from 'sciux-laplace'
 import { LineType } from '../shared'
 import { resolveDasharray } from '../utils/line'
+import { arc } from './arc'
+import { bounding } from './bouding'
+import { angleEndPoint, angleStartPoint, origin } from './points'
 
 const T = type({
   x: 'number',
@@ -17,6 +20,12 @@ const T = type({
 })
 
 export const angle = defineComponent<'angle', typeof T.infer>((attrs) => {
+  const space = new Map()
+  space.set('arc', arc)
+  space.set('bounding', bounding)
+  space.set('start-point', angleStartPoint)
+  space.set('end-point', angleEndPoint)
+  space.set('origin', origin)
   return {
     name: 'angle',
     attrs: T,
@@ -69,9 +78,6 @@ export const angle = defineComponent<'angle', typeof T.infer>((attrs) => {
       startSide: attrs.startSide,
       endSide: attrs.endSide,
     },
+    space,
   }
 })
-
-export * from './arc'
-export * from './bouding'
-export * from './points'
