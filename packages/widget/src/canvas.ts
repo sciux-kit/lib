@@ -17,8 +17,10 @@ export default defineComponent<'canvas', typeof CanvasType.infer>((attrs) => {
     setup(children) {
       const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
       svg.setAttribute('viewBox', `0 0 ${attrs.width.value} ${attrs.height.value}`)
-      svg.setAttribute('width', '100%')
-      svg.style.aspectRatio = (attrs.width.value / attrs.height.value).toString()
+
+      svg.style.height = attrs.height.value.toString()
+      svg.style.width = attrs.width.value.toString()
+
       const root = document.createElementNS('http://www.w3.org/2000/svg', 'g')
       root.setAttribute('transform', `translate(${attrs.origin.value.join(',')})`)
       root.append(...children())

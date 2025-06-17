@@ -31,7 +31,6 @@
   },
   "dependencies": {
     "@sciux/layout": "workspace:*",
-    "@sciux/math": "workspace:*",
     "@sciux/model": "workspace:*",
     "@sciux/widget": "workspace:*",
     "sciux-laplace": "catalog:"

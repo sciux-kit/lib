@@ -1,0 +1,43 @@
+<columns align="center" gap="10px">
+  <block>This is a triangle, it's three sides are following the Pythagorean theorem.</block>
+  <block>Let's see the graph</block>
+  <!-- <canvas :width="200" :height="140"></canvas> -->
+  <rows gap="10px">
+    <columns>
+      <block>Use Python to calculate it:</block>
+      <code language="python">
+def pythagorean(a, b):
+  return (a**2 + b**2)**0.5
+      </code>
+    </columns>
+    <columns>
+      Use JavaScript to calculate it:
+      <code language="javascript">
+function pythagorean(a, b) {
+  return Math.sqrt(a**2 + b**2)
+}
+      </code>
+    </columns>
+  </rows>
+  <rows>
+    <table align="horizon" :columns="3">
+      <block>a Value</block>
+      <block>b Value</block>
+      <block>Result</block>
+      <block>3</block>
+      <block>4</block>
+      <block>5</block>
+      <block>5</block>
+      <block>12</block>
+      <block>13</block>
+      <block>8</block>
+      <block>15</block>
+      <block>17</block>
+    </table>
+  </rows>
+  <rows>
+    <canvas :width="200" :height="140">
+      
+    </canvas>
+  </rows>
+</columns>
