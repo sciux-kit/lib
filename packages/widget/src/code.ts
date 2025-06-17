@@ -18,8 +18,6 @@ export default defineComponent<'code', typeof T.infer>((attrs) => {
     attrs: T,
     setup(children) {
       const container = document.createElement('div')
-      container.style.width = '100%'
-      container.style.height = '100%'
       const kids = children()
       // Filter out text nodes
       const content = kids[0].textContent ?? ''
@@ -27,7 +25,12 @@ export default defineComponent<'code', typeof T.infer>((attrs) => {
         lang: attrs.language.value,
         theme: 'github-dark',
       })
-      container.innerHTML = html
+
+      container.innerHTML = html;
+
+      (container.childNodes[0] as HTMLElement).style.paddingLeft = '1rem';
+      (container.childNodes[0] as HTMLElement).style.paddingRight = '1rem'
+
       return container
     },
   }
