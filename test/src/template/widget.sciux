@@ -19,7 +19,7 @@ function pythagorean(a, b) {
       </code>
     </columns>
   </rows>
-  <flexbox>
+  <rows>
     <table align="horizon" :columns="3">
       <block>a Value</block>
       <block>b Value</block>
@@ -34,5 +34,10 @@ function pythagorean(a, b) {
       <block>15</block>
       <block>17</block>
     </table>
-  </flexbox>
+  </rows>
+  <rows>
+    <canvas :width="200" :height="140">
+      
+    </canvas>
+  </rows>
 </columns>
