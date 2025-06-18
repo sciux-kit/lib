@@ -4,5 +4,3 @@ export { default as columns } from './columns'
 export { default as flexbox } from './flexbox'
 export { default as grid } from './grid'
 export { default as rows } from './rows'
-
-export * from './utils/size'

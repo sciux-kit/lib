@@ -1,26 +1,25 @@
 <columns align="center" gap="10px">
   <block>This is a triangle, it's three sides are following the Pythagorean theorem.</block>
-  <tex>c = \pm\sqrt{a^2 + b^2}</tex>
   <block>Let's see the graph</block>
-  <canvas :width="200" :height="140"></canvas>
-  <rows>
+  <!-- <canvas :width="200" :height="140"></canvas> -->
+  <rows gap="10px">
     <columns>
-      <flexbox>Use Python to calculate it:</flexbox>
+      <block>Use Python to calculate it:</block>
       <code language="python">
-        def pythagorean(a, b):
-          return (a**2 + b**2)**0.5
+def pythagorean(a, b):
+  return (a**2 + b**2)**0.5
       </code>
     </columns>
     <columns>
       Use JavaScript to calculate it:
       <code language="javascript">
-        function pythagorean(a, b) {
-          return Math.sqrt(a**2 + b**2)
-        }
+function pythagorean(a, b) {
+  return Math.sqrt(a**2 + b**2)
+}
       </code>
     </columns>
   </rows>
-  <flexbox>
+  <rows>
     <table align="horizon" :columns="3">
       <block>a Value</block>
       <block>b Value</block>
@@ -35,5 +34,10 @@
       <block>15</block>
       <block>17</block>
     </table>
-  </flexbox>
+  </rows>
+  <rows>
+    <canvas :width="200" :height="140">
+      
+    </canvas>
+  </rows>
 </columns>

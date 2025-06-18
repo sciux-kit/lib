@@ -1,9 +1,9 @@
 import type { Ref } from '@vue/reactivity'
+import { theme } from '@sciux/utils-theme'
 import { ref, toValue } from '@vue/reactivity'
 import { type } from 'arktype'
 import { defineComponent } from 'sciux-laplace'
-import block, { BlockType } from './block'
-import { size } from './utils/size'
+import block, { blockDefaults, BlockType } from './block'
 
 const Position = type(`'start' | 'end' | 'center'`)
 export const FlexboxType = type({
@@ -17,6 +17,14 @@ export const FlexboxType = type({
   basis: type(`string | number`).optional(),
 }).and(BlockType)
 
+export const flexboxDefaults = {
+  direction: 'row' as const,
+  wrap: 'nowrap' as const,
+  grow: 1,
+  shrink: 0,
+  ...blockDefaults,
+}
+
 export default defineComponent<'flexbox', typeof FlexboxType.infer, { direction?: Ref<'row' | 'column'> }>((attrs, context) => {
   const extend = block(attrs, context)
   const direction = ref(toValue(attrs.direction ?? 'row') as string)
@@ -25,12 +33,7 @@ export default defineComponent<'flexbox', typeof FlexboxType.infer, { direction?
   return {
     name: 'flexbox',
     attrs: FlexboxType,
-    defaults: {
-      direction: 'row',
-      wrap: 'nowrap',
-      grow: 1,
-      shrink: 0,
-    },
+    defaults: flexboxDefaults,
     setup: (children) => {
       const element = extend.setup!(children) as HTMLDivElement
 
@@ -44,11 +47,11 @@ export default defineComponent<'flexbox', typeof FlexboxType.infer, { direction?
       direction.value = toValue(attrs.direction)
       element.style.justifyContent = toValue(attrs.justify ?? 'auto')!
       element.style.alignItems = toValue(attrs.align ?? 'auto')!
-      element.style.gap = size(toValue(attrs.gap) ?? 'auto')
+      element.style.gap = theme.size(toValue(attrs.gap) ?? 'auto')
       element.style.flexWrap = toValue(attrs.wrap)
       element.style.flexGrow = (toValue(attrs.grow) ?? 1).toString()
       element.style.flexShrink = (toValue(attrs.shrink) ?? 0).toString()
-      element.style.flexBasis = size(toValue(attrs.basis) ?? 'auto')
+      element.style.flexBasis = theme.size(toValue(attrs.basis) ?? 'auto')
       return element
     },
     provides: {

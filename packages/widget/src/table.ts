@@ -11,7 +11,7 @@
  * ```
  */
 
-import { size } from '@sciux/layout'
+import { theme } from '@sciux/utils-theme'
 import { type } from 'arktype'
 import { defineComponent, toValue } from 'sciux-laplace'
 
@@ -47,7 +47,7 @@ export default defineComponent<'table', typeof TableType.infer>((attrs, _context
       // 应用 inset 参数到表格的内边距
       const insetValue = toValue(attrs.inset)
       if (insetValue !== undefined) {
-        table.style.padding = size(insetValue)
+        table.style.padding = theme.size(insetValue)
       }
 
       const caption = toValue(attrs.caption)
@@ -72,7 +72,7 @@ export default defineComponent<'table', typeof TableType.infer>((attrs, _context
           Array.from({ length: columns }).forEach((_, colIndex) => {
             const td = document.createElement('td')
             td.style.textAlign = 'center'
-            td.style.padding = size('sm')
+            td.style.padding = theme.size('sm')
             const childIndex = rowIndex * columns + colIndex
             if (childIndex < childArray.length) {
               td.append(childArray[childIndex])
@@ -93,7 +93,7 @@ export default defineComponent<'table', typeof TableType.infer>((attrs, _context
           Array.from({ length: columns }).forEach((_, colIndex) => {
             const td = document.createElement('td')
             td.style.textAlign = 'center'
-            td.style.padding = size('sm')
+            td.style.padding = theme.size('sm')
             const childIndex = rowIndex * columns + colIndex
             if (childIndex < childArray.length) {
               td.append(childArray[childIndex])

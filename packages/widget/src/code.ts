@@ -28,7 +28,12 @@ export default defineComponent<'code', typeof T.infer>((attrs) => {
         lang: attrs.language.value,
         theme: 'github-dark',
       })
-      container.innerHTML = html
+
+      container.innerHTML = html;
+
+      (container.childNodes[0] as HTMLElement).style.paddingLeft = '1rem';
+      (container.childNodes[0] as HTMLElement).style.paddingRight = '1rem'
+
       return container
     },
   }

@@ -1,0 +1,59 @@
+/* Background */
+:root {
+  --sci-background: #24292F;
+  --sci-background-accent: #181C20;
+}
+
+/* Base Color Palette */
+:root {
+  --sci-primary: #FFFFFF;
+  --sci-note: #C7EDCC;
+  --sci-warning: #F59E0B;
+  --sci-accent: #FFFF00;
+  --sci-alert: #EF4444;
+  --sci-info: #3B82F6;
+  --sci-success: #10B981;
+  --sci-creative: #F472B6;
+}
+
+/* Transparent Marker Colors */
+:root {
+  --sci-highlight-primary: var(--sci-highlight-key);
+  --sci-highlight-key: rgba(var(--sci-accent), 0.5);
+  --sci-highlight-support: rgba(var(--sci-success), 0.5);
+  --sci-highlight-creative: rgba(var(--sci-creative), 0.5);
+  --sci-highlight-caution: rgba(var(--sci-warning), 0.5);
+  --sci-highlight-info: rgba(var(--sci-info), 0.5);
+}
+
+/* Size Table */
+:root {
+  --sci-size-primary: 16px;
+  --sci-size-3xs: 12px;
+  --sci-size-2xs: 14px;
+  --sci-size-xs: 16px;
+  --sci-size-sm: 18px;
+  --sci-size-md: 20px;
+  --sci-size-lg: 24px;
+  --sci-size-xl: 32px;
+  --sci-size-2xl: 40px;
+  --sci-size-3xl: 48px;
+  --sci-size-4xl: 56px;
+  --sci-size-5xl: 64px;
+  --sci-size-6xl: 72px;
+}
+
+/* Font */
+:root {
+  --sci-font-primary: 'Inter', sans-serif;
+  --sci-font-comic: 'Comic Sans MS', cursive;
+  --sci-font-code: 'JetBrains Mono', monospace;
+  --sci-font-math: 'Times New Roman', serif;
+}
+
+/* Dash Array */
+:root {
+  --sci-dasharray-solid: 0 0;
+  --sci-dasharray-dashed: 10 5;
+  --sci-dasharray-dotted: 2 2;
+}
