@@ -3,9 +3,9 @@ export function isCSSVariableExist(variableName: string): boolean {
   return rootStyles.getPropertyValue(variableName).trim() !== ''
 }
 
-export function size(name: string): string {
+export function size(name: string | number): string {
   const variable = `--sci-size-${name}`
-  return isCSSVariableExist(variable) ? `var(${variable})` : name
+  return isCSSVariableExist(variable) ? `var(${variable})` : name.toString()
 }
 
 export function pallete(name: string): string {

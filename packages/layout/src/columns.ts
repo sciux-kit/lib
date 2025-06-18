@@ -1,7 +1,7 @@
 import type { Ref } from 'sciux-laplace'
 import { type } from 'arktype'
 import { defineComponent, ref, toValue } from 'sciux-laplace'
-import flexbox, { FlexboxType } from './flexbox'
+import flexbox, { flexboxDefaults, FlexboxType } from './flexbox'
 
 const T = type({
 
@@ -12,6 +12,7 @@ export default defineComponent<'columns', typeof T.infer, { direction?: Ref<'row
   return {
     name: 'columns',
     attrs: T,
+    defaults: flexboxDefaults,
     setup: (children) => {
       const extend = flexbox(attrs, {
         ...context,

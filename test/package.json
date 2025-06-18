@@ -9,6 +9,8 @@
   "dependencies": {
     "@sciux/layout": "workspace:^",
     "@sciux/model": "workspace:^",
+    "@sciux/theme-default": "workspace:^",
+    "@sciux/utils-theme": "workspace:^",
     "@sciux/widget": "workspace:^",
     "sciux": "workspace:^",
     "sciux-laplace": "catalog:"

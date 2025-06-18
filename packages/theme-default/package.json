@@ -11,12 +11,6 @@
   },
   "bugs": "https://github.com/sciux-kit/lib/issues",
   "keywords": [],
-  "exports": {
-    ".": {
-      "types": "./src/index.ts",
-      "import": "./dist/index.js"
-    }
-  },
   "main": "./dist/index.mjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.mts",
@@ -24,10 +18,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsup",
-    "dev": "tsup --watch",
-    "prepublishOnly": "nr build",
-    "start": "tsx src/index.ts"
+    "prepublishOnly": "nr build"
   },
   "dependencies": {
     "@sciux/layout": "workspace:^",
