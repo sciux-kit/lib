@@ -1,8 +1,8 @@
 {
-  "name": "@sciux/layout",
+  "name": "@sciux/utils-theme",
   "type": "module",
   "version": "0.0.5",
-  "description": "Layout components for SciuxKit",
+  "description": "Theme utilities for SciuxKit",
   "author": "BijonAI <info@bijon.ai>",
   "license": "MIT",
   "repository": {
@@ -30,7 +30,6 @@
     "start": "tsx src/index.ts"
   },
   "dependencies": {
-    "@sciux/utils-theme": "workspace:^",
     "@vue/reactivity": "^3.5.14",
     "arktype": "^2.1.20",
     "sciux-laplace": "catalog:"

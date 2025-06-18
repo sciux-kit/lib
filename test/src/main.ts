@@ -1,5 +1,6 @@
 import init, { render } from 'sciux'
 import examples from './examples'
+import '@sciux/theme-default/styles/vars.css'
 
 const urlName = window.location.hash.slice(1)
 const app = document.getElementById('app')!
