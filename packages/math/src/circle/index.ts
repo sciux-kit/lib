@@ -1,3 +1,4 @@
+import { theme } from '@sciux/utils-theme'
 import { type } from 'arktype'
 import { defineComponent } from 'sciux-laplace'
 import { LineType } from '../shared'
@@ -33,7 +34,7 @@ export const circle = defineComponent<'circle', typeof T.infer>((attrs) => {
       container.setAttribute('transform', `translate(${attrs.x.value}, ${attrs.y.value})`)
       const path = document.createElementNS('http://www.w3.org/2000/svg', 'path')
       path.setAttribute('d', describeArc([attrs.x.value, attrs.y.value], attrs.radius.value, attrs.from.value, attrs.to.value))
-      path.setAttribute('stroke', 'black')
+      path.setAttribute('stroke', theme.pallete('primary'))
       path.setAttribute('fill', 'none')
       path.setAttribute('stroke-dasharray', resolveDasharray(attrs.type.value))
       container.append(path)

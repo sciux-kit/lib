@@ -6,12 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite + TS</title>
   </head>
-  <body style="margin: 0; padding: 5px;">
+  <body style="margin: 0; padding: 0">
     <div id="root" style="margin: 0px; padding: 0px; display: flex; flex-direction: row; width: 100%; height: 100%;">
-      <div id="sidebar" style="display: flex; flex-direction: column; height: 100%; margin: 0 0.5rem;"></div>
-      <div id="app" style="height: 100%; border: 1px dashed #ccc; overflow-y: auto;">
+      <div id="sidebar" style="display: flex; width: 200px; flex-direction: column; height: 100%; margin: 0 0.5rem;"></div>
+      <div id="app" style="height: 100%; width: 100%; border: 1px dashed #ccc; overflow-y: auto;">
       </div>
     </div>
     <script type="module" src="/src/main.ts"></script>
+    <!-- <link rel="stylesheet" href="/node_modules/@sciux/theme-default/styles/main.css"> -->
   </body>
 </html>

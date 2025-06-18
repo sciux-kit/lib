@@ -1,3 +1,4 @@
+import { theme } from '@sciux/utils-theme'
 import { type } from 'arktype'
 import { defineComponent } from 'sciux-laplace'
 import { LineType } from '../shared'
@@ -28,7 +29,7 @@ export const arc = defineComponent<'arc', typeof T.infer, {
       const container = document.createElementNS('http://www.w3.org/2000/svg', 'g')
       const path = document.createElementNS('http://www.w3.org/2000/svg', 'path')
       path.setAttribute('d', describeArc([context.x, context.y], (context.startSide ?? context.endSide) / 3, context.from, context.to))
-      path.setAttribute('stroke', 'black')
+      path.setAttribute('stroke', theme.pallete('primary'))
       path.setAttribute('fill', 'none')
       path.setAttribute('stroke-dasharray', resolveDasharray(attrs.type.value))
       const texElement = generateTexNode(attrs.value?.value)

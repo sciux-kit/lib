@@ -30,6 +30,7 @@
     "start": "tsx src/index.ts"
   },
   "dependencies": {
+    "@sciux/utils-theme": "workspace:^",
     "@sciux/widget": "workspace:^",
     "@vue/reactivity": "^3.5.14",
     "arktype": "^2.1.20",

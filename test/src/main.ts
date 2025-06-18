@@ -1,6 +1,6 @@
 import init, { render } from 'sciux'
 import examples from './examples'
-import '@sciux/theme-default/styles/vars.css'
+import '@sciux/theme-default/styles/main.css'
 
 const urlName = window.location.hash.slice(1)
 const app = document.getElementById('app')!
@@ -48,6 +48,7 @@ function createItem(name: string, level: number, handler: () => void): any {
 function createRenderer(source: string) {
   return () => {
     app.innerHTML = ''
+    app.style.backgroundColor = 'var(--sci-background)'
     render(source, app)
   }
 }

@@ -1,3 +1,4 @@
+import { theme } from '@sciux/utils-theme'
 import { type } from 'arktype'
 import { renderToString } from 'katex'
 import { defineComponent } from 'sciux-laplace'
@@ -24,11 +25,16 @@ export default defineComponent<'tex', typeof T.infer, {
         container = document.createElementNS('http://www.w3.org/2000/svg', 'foreignObject')
         container.setAttribute('width', '100%')
         container.setAttribute('height', '100%')
+        const subContainer = document.createElement('div')
+        subContainer.style.color = theme.pallete('note')
+        subContainer.innerHTML = html
+        container.append(subContainer)
       }
       else {
         container = document.createElement('div')
+        container.style.color = theme.pallete('primary')
+        container.innerHTML = html
       }
-      container.innerHTML = html
       return container
     },
   }

@@ -1,6 +1,7 @@
 export function isCSSVariableExist(variableName: string): boolean {
-  const rootStyles = document.documentElement.style
-  return rootStyles.getPropertyValue(variableName).trim() !== ''
+  const style = window.getComputedStyle(document.documentElement)
+  const value = style.getPropertyValue(variableName).trim()
+  return value !== ''
 }
 
 export function size(name: string | number): string {

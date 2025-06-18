@@ -194,6 +194,9 @@ importers:
 
   packages/math:
     dependencies:
+      '@sciux/utils-theme':
+        specifier: workspace:^
+        version: link:../utils-theme
       '@sciux/widget':
         specifier: workspace:^
         version: link:../widget
@@ -224,9 +227,15 @@ importers:
       '@sciux/layout':
         specifier: workspace:*
         version: link:../layout
+      '@sciux/math':
+        specifier: workspace:*
+        version: link:../math
       '@sciux/model':
         specifier: workspace:*
         version: link:../model
+      '@sciux/utils-theme':
+        specifier: workspace:*
+        version: link:../utils-theme
       '@sciux/widget':
         specifier: workspace:*
         version: link:../widget
@@ -239,6 +248,42 @@ importers:
       '@sciux/layout':
         specifier: workspace:^
         version: link:../layout
+      '@vue/reactivity':
+        specifier: ^3.5.14
+        version: 3.5.14
+      arktype:
+        specifier: ^2.1.20
+        version: 2.1.20
+      katex:
+        specifier: ^0.16.22
+        version: 0.16.22
+      sciux-laplace:
+        specifier: 'catalog:'
+        version: 0.0.1-beta.6
+      shiki:
+        specifier: ^3.4.2
+        version: 3.4.2
+
+  packages/utils-theme:
+    dependencies:
+      '@vue/reactivity':
+        specifier: ^3.5.14
+        version: 3.5.14
+      arktype:
+        specifier: ^2.1.20
+        version: 2.1.20
+      sciux-laplace:
+        specifier: 'catalog:'
+        version: 0.0.1-beta.6
+
+  packages/widget:
+    dependencies:
+      '@sciux/layout':
+        specifier: workspace:^
+        version: link:../layout
+      '@sciux/utils-theme':
+        specifier: workspace:^
+        version: link:../utils-theme
       '@vue/reactivity':
         specifier: ^3.5.14
         version: 3.5.14
@@ -277,11 +322,7 @@ importers:
         version: link:../packages/sciux
       sciux-laplace:
         specifier: 'catalog:'
-<<<<<<< HEAD
         version: 0.0.1-beta.6
-=======
-        version: 0.0.1-beta.1
->>>>>>> main
     devDependencies:
       typescript:
         specifier: ~5.8.3
@@ -3679,12 +3720,6 @@ packages:
   run-parallel@1.2.0:
     resolution: {integrity: sha512-5l4VyZR86LZ/lDxZTR6jqL8AFE2S0IFLMP26AbjsLVADxHdhB/c0GUsH+y39UfCi3dzz8OlQuPmnaJOMoDHQBA==}
 
-<<<<<<< HEAD
-=======
-  sciux-laplace@0.0.1-beta.1:
-    resolution: {integrity: sha512-6+JtNbEnKen1GjsS8IWnvD0WOuhMAg+vqBZUqiJGqkLJ2DgNat/pct/nzAwrzN+5AEUY2fL8M4MjVF8onYGVEA==}
-
->>>>>>> main
   sciux-laplace@0.0.1-beta.6:
     resolution: {integrity: sha512-kHTTtQoF3BB+NAwI6ZV6c+LZRWwwpNsFj/jrau97+aJSClKifauzubWzU5p4ofszaKUc18GtUdJo9PhjtkzlDw==}
 
@@ -4978,11 +5013,7 @@ snapshots:
 
   '@iconify/utils@2.3.0':
     dependencies:
-<<<<<<< HEAD
-      '@antfu/install-pkg': 1.0.0
-=======
       '@antfu/install-pkg': 1.1.0
->>>>>>> main
       '@antfu/utils': 8.1.1
       '@iconify/types': 2.0.0
       debug: 4.4.1
@@ -7977,21 +8008,6 @@ snapshots:
     dependencies:
       queue-microtask: 1.2.3
 
-<<<<<<< HEAD
-=======
-  sciux-laplace@0.0.1-beta.1:
-    dependencies:
-      '@vue/reactivity': 3.5.14
-      '@vue/shared': 3.5.14
-      '@xmldom/xmldom': 0.9.8
-      arktype: 2.1.20
-      clsx: 2.1.1
-      css-what: 6.1.0
-      morphdom: 2.7.5
-      parse-entities: 4.0.2
-      xpath: 0.0.34
-
->>>>>>> main
   sciux-laplace@0.0.1-beta.6:
     dependencies:
       '@vue/reactivity': 3.5.14

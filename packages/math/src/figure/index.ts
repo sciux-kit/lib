@@ -1,3 +1,4 @@
+import { theme } from '@sciux/utils-theme'
 import { type } from 'arktype'
 import { defineComponent } from 'sciux-laplace'
 import { points } from './points'
@@ -31,7 +32,7 @@ export const figure = defineComponent<'figure', typeof T.infer>((attrs) => {
       else {
         pathElement.setAttribute('d', path.map(([name, x, y]) => `${name}${x} ${y}`).join(' '))
       }
-      pathElement.setAttribute('stroke', 'black')
+      pathElement.setAttribute('stroke', theme.pallete('primary'))
       pathElement.setAttribute('fill', 'none')
       container.setAttribute('transform', `translate(${attrs.x.value}, ${attrs.y.value})`)
       container.append(pathElement)
