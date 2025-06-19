@@ -1,4 +1,5 @@
-import { angle, circle, figure, line } from '@sciux/math'
+import { angle, axis, circle, figure, func, line, plane } from '@sciux/math'
+import { withSpace } from 'sciux-laplace'
 import { canvasSpace } from './widget'
 
 export default function (): void {
@@ -6,6 +7,9 @@ export default function (): void {
   canvasSpace.set('line', line)
   canvasSpace.set('figure', figure)
   canvasSpace.set('circle', circle)
+  canvasSpace.set('function', func)
+  canvasSpace.set('axis', axis)
+  canvasSpace.set('plane', withSpace(plane, canvasSpace))
 }
 
 export * from '@sciux/math'

@@ -1,4 +1,4 @@
-<canvas :width="300" :height="240" :origin="[150, 120]">
+<canvas :width="900" :height="240 * 3" :origin="[150 * 3, 120]">
   <angle :x="0" :y="0" :from="0" :to="120" :start-side="100" :end-side="100">
     <bounding type="dashed" value="R = 2r" />
     <arc type="dashed" value="120" />
@@ -9,4 +9,5 @@
     <start-point as="A" />
     <end-point as="B" />
   </line>
+  <function :domain="[-10, 10]" :expr="(x) => Math.cos(Math.sin(x) * Math.tan(x)) * Math.atan(x)" :division="10" />
 </canvas>

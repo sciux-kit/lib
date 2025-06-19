@@ -23,3 +23,8 @@ export function dasharray(name: string): string {
   const variable = `--sci-dasharray-${name}`
   return isCSSVariableExist(variable) ? `var(${variable})` : name
 }
+
+export function font(name: string): string {
+  const variable = `--sci-font-${name}`
+  return isCSSVariableExist(variable) ? `var(${variable})` : name
+}
