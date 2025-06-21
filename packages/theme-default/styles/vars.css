@@ -8,12 +8,12 @@
 :root {
   --sci-primary: #FFFFFF;
   --sci-note: #C7EDCC;
-  --sci-warning: #F59E0B;
-  --sci-accent: #FFFF00;
-  --sci-alert: #EF4444;
-  --sci-info: #3B82F6;
-  --sci-success: #10B981;
-  --sci-creative: #F472B6;
+  --sci-warning: #F7B051;
+  --sci-accent: #F5F779;
+  --sci-alert: #F76E67;
+  --sci-info: #4DDEF6;
+  --sci-success: #66ECDD;
+  --sci-creative: #CCB8E4;
 }
 
 /* Transparent Marker Colors */

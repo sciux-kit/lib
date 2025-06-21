@@ -1,16 +1,18 @@
 import type { RegisterContext } from './types'
-import { animations, components, flows, textModes } from 'sciux-laplace'
+import { animations, flows, root, textModes } from 'sciux-laplace'
 import layout from './layout'
+import math from './math'
 import model from './model'
 import widget from './widget'
 
 const defaultContext: RegisterContext = {
-  components,
+  root,
   flows,
   animations,
   textModes,
 }
-const registers = [widget, model, layout]
+const registers = [widget, model, layout, math]
+animations.set('creation', [])
 
 export default function (context: RegisterContext = defaultContext): void {
   for (const register of registers) {
@@ -19,6 +21,7 @@ export default function (context: RegisterContext = defaultContext): void {
 }
 
 export * from './layout'
+export * from './math'
 export * from './model'
 export * from './widget'
 export * from 'sciux-laplace'

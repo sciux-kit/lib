@@ -1,0 +1,3 @@
+<canvas :width="300" :height="240" :origin="[150, 120]">
+  <circle :x="0" :y="0" :radius="100" :from="0" :to="120" type="dashed" />
+</canvas>
