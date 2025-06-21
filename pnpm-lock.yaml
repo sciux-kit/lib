@@ -49,8 +49,8 @@ catalogs:
       specifier: ^10.4.0
       version: 10.4.0
     sciux-laplace:
-      specifier: v0.0.1-beta.7
-      version: 0.0.1-beta.7
+      specifier: v0.0.1-beta.8
+      version: 0.0.1-beta.8
     simple-git-hooks:
       specifier: ^2.11.1
       version: 2.11.1
@@ -190,7 +190,7 @@ importers:
         version: 2.1.20
       sciux-laplace:
         specifier: 'catalog:'
-        version: 0.0.1-beta.7
+        version: 0.0.1-beta.8
 
   packages/math:
     dependencies:
@@ -208,7 +208,7 @@ importers:
         version: 2.1.20
       sciux-laplace:
         specifier: 'catalog:'
-        version: 0.0.1-beta.7
+        version: 0.0.1-beta.8
 
   packages/model:
     dependencies:
@@ -220,7 +220,7 @@ importers:
         version: 2.1.20
       sciux-laplace:
         specifier: 'catalog:'
-        version: 0.0.1-beta.7
+        version: 0.0.1-beta.8
 
   packages/sciux:
     dependencies:
@@ -241,7 +241,7 @@ importers:
         version: link:../widget
       sciux-laplace:
         specifier: 'catalog:'
-        version: 0.0.1-beta.7
+        version: 0.0.1-beta.8
 
   packages/theme-default:
     dependencies:
@@ -259,7 +259,7 @@ importers:
         version: 0.16.22
       sciux-laplace:
         specifier: 'catalog:'
-        version: 0.0.1-beta.7
+        version: 0.0.1-beta.8
       shiki:
         specifier: ^3.4.2
         version: 3.4.2
@@ -274,7 +274,7 @@ importers:
         version: 2.1.20
       sciux-laplace:
         specifier: 'catalog:'
-        version: 0.0.1-beta.7
+        version: 0.0.1-beta.8
 
   packages/widget:
     dependencies:
@@ -295,7 +295,7 @@ importers:
         version: 0.16.22
       sciux-laplace:
         specifier: 'catalog:'
-        version: 0.0.1-beta.7
+        version: 0.0.1-beta.8
       shiki:
         specifier: ^3.4.2
         version: 3.4.2
@@ -322,7 +322,7 @@ importers:
         version: link:../packages/sciux
       sciux-laplace:
         specifier: 'catalog:'
-        version: 0.0.1-beta.7
+        version: 0.0.1-beta.8
     devDependencies:
       typescript:
         specifier: ~5.8.3
@@ -3720,8 +3720,8 @@ packages:
   run-parallel@1.2.0:
     resolution: {integrity: sha512-5l4VyZR86LZ/lDxZTR6jqL8AFE2S0IFLMP26AbjsLVADxHdhB/c0GUsH+y39UfCi3dzz8OlQuPmnaJOMoDHQBA==}
 
-  sciux-laplace@0.0.1-beta.7:
-    resolution: {integrity: sha512-R88dSwAZ4FbW3cuWJazONw51ssBO87jeK/jvF3ImdW4NWfbrIP4SHJ3kq3/MZMOHMHCHMQhcVZVOLqtPPmFO5A==}
+  sciux-laplace@0.0.1-beta.8:
+    resolution: {integrity: sha512-XnHrnvCK9Z+aNj+BN70JQEQ3anr2c34uPLlWXu+psVr6LKuq34eg7mF1TrA5Nh9aXO5vGeDYF/2vGxm045jXTg==}
 
   scslre@0.3.0:
     resolution: {integrity: sha512-3A6sD0WYP7+QrjbfNA2FN3FsOaGGFoekCVgTyypy53gPxhbkCIjtO6YWgdrfM+n/8sI8JeXZOIxsHjMTNxQ4nQ==}
@@ -8008,7 +8008,7 @@ snapshots:
     dependencies:
       queue-microtask: 1.2.3
 
-  sciux-laplace@0.0.1-beta.7:
+  sciux-laplace@0.0.1-beta.8:
     dependencies:
       '@vue/reactivity': 3.5.14
       '@vue/shared': 3.5.14

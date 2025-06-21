@@ -12,6 +12,7 @@ const defaultContext: RegisterContext = {
   textModes,
 }
 const registers = [widget, model, layout, math]
+animations.set('creation', [])
 
 export default function (context: RegisterContext = defaultContext): void {
   for (const register of registers) {

@@ -1,5 +1,6 @@
+<!-- <let :x="0" /> -->
 <canvas :width="900" :height="240 * 3" :origin="[150 * 3, 360]">
   <plane :x="0" :y="0" :division="25" :domain="[-10, 10]" :range="[-5, 5]" :x-label="count => count.toString()" :y-label="count => count.toString()">
-    <function :domain="[-10, 10]" :expr="(x) => Math.cos(Math.sin(x) * Math.tan(x)) * Math.atan(x)" />
+    <function $="creation,1000" :domain="[-10, 10]" :expr="(x) => Math.sin(x)" />
   </plane>
 </canvas>
