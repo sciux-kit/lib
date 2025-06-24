@@ -1,4 +1,4 @@
-import init, { render } from 'sciux'
+import init, { applyTheme, render } from 'sciux'
 import examples from './examples'
 import '@sciux/theme-default/styles/main.css'
 
@@ -48,7 +48,7 @@ function createItem(name: string, level: number, handler: () => void): any {
 function createRenderer(source: string) {
   return () => {
     app.innerHTML = ''
-    app.style.backgroundColor = 'var(--sci-background)'
+    applyTheme('#app')
     render(source, app)
   }
 }

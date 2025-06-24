@@ -13,7 +13,7 @@ const T = type({
   type: LineType,
 })
 
-export const line = defineComponent<'line', typeof T.infer>((attrs) => {
+export const line = defineComponent<'line', typeof T.infer>((attrs, context) => {
   const space = new Map()
   space.set('start-point', lineStartPoint)
   space.set('end-point', lineEndPoint)
