@@ -17,9 +17,6 @@
   "files": [
     "dist"
   ],
-  "scripts": {
-    "prepublishOnly": "nr build"
-  },
   "dependencies": {
     "@sciux/layout": "workspace:^",
     "@vue/reactivity": "^3.5.14",
