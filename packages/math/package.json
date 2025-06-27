@@ -1,8 +1,8 @@
 {
-  "name": "@sciux/widget",
+  "name": "@sciux/math",
   "type": "module",
   "version": "0.0.5",
-  "description": "Widgets for SciuxKit",
+  "description": "Layout components for SciuxKit",
   "author": "BijonAI <info@bijon.ai>",
   "license": "MIT",
   "repository": {
@@ -30,12 +30,10 @@
     "start": "tsx src/index.ts"
   },
   "dependencies": {
-    "@sciux/layout": "workspace:^",
     "@sciux/utils-theme": "workspace:^",
+    "@sciux/widget": "workspace:^",
     "@vue/reactivity": "^3.5.14",
     "arktype": "^2.1.20",
-    "katex": "^0.16.22",
-    "sciux-laplace": "catalog:",
-    "shiki": "^3.4.2"
+    "sciux-laplace": "catalog:"
   }
 }
