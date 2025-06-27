@@ -30,7 +30,7 @@ export function describeImage(expr: (x: number) => number, domain: number[], div
   }
 }
 
-export const func = defineComponent<'function', withExprT & typeof T.infer, {
+export const func = defineComponent<'function', typeof T.infer, {
   division?: number
 }>((attrs, context) => {
   const space = new Map()
@@ -51,7 +51,7 @@ export const func = defineComponent<'function', withExprT & typeof T.infer, {
       path.setAttribute('stroke', theme.pallete('info'))
       path.setAttribute('fill', 'none')
       path.id = 'function-path'
-      const { points } = describeImage(expr.value, domain.value, context.division ?? division.value)
+      const { points } = describeImage(expr.value as (x: number) => number, domain.value, context.division ?? division.value)
       path.setAttribute('d', `M ${points.map(([x, y]) => `${x},${y}`).join(' ')}`)
       // console.log(describeImage(expr.value, domain.value, context.division ?? division.value))
       container.append(path, ...children())
@@ -61,15 +61,15 @@ export const func = defineComponent<'function', withExprT & typeof T.infer, {
   }
 })
 
-export const funcCreation = defineAnimation<[], withExprT & typeof T.infer>((node: SVGGElement, _, { attrs }) => {
-  const { length } = describeImage(attrs.expr.value, attrs.domain.value, 25)
+export const funcCreation = defineAnimation<[], typeof T.infer>((node, _, { attrs }) => {
+  const { length } = describeImage(attrs.expr.value as (x: number) => number, attrs.domain.value, 25)
   return {
     validator: name => name === 'function',
     setup(progress) {
       if (progress >= 1) {
         return true
       }
-      node.style.strokeDasharray = `${length * progress},${length * (1 - progress)}`
+      ;(<SVGGElement>node).style.strokeDasharray = `${length * progress},${length * (1 - progress)}`
       return false
     },
   }

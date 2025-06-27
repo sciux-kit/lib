@@ -16,7 +16,7 @@ interface withLabelT {
 
 export const resolveDirection = (value: string): 1 | -1 => ['left', 'top'].includes(value) ? -1 : 1
 
-export const axis = defineComponent<'axis', typeof T.infer & withLabelT>((attrs) => {
+export const axis = defineComponent<'axis', typeof T.infer>((attrs) => {
   return {
     name: 'axis',
     provides: {
@@ -64,7 +64,7 @@ export const axis = defineComponent<'axis', typeof T.infer & withLabelT>((attrs)
         const label = document.createElementNS('http://www.w3.org/2000/svg', 'text')
         label.setAttribute(['left', 'right'].includes(attrs.direction.value) ? 'x' : 'y', (i * attrs.division.value * resolveDirection(attrs.direction.value)).toString())
         label.setAttribute(['left', 'right'].includes(attrs.direction.value) ? 'y' : 'x', '16')
-        label.textContent = attrs.label.value(i)
+        label.textContent = (attrs.label.value as (count: number) => string)(i)
         labels.append(label)
       }
       axes.append(labels)
