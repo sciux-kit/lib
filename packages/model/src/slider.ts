@@ -7,7 +7,7 @@ import { defineComponent } from 'sciux-laplace'
 
 const T = type({
   model: 'string',
-  defaultValue: 'number',
+  value: 'number',
   disabled: 'boolean',
 })
 
@@ -26,7 +26,7 @@ export default defineComponent<'slider', typeof T.infer, Context>((attrs, contex
     name: 'slider',
     attrs: T,
     setup: () => {
-      input.defaultValue = toValue(attrs.defaultValue).toString()
+      input.defaultValue = toValue(attrs.value).toString()
       input.disabled = toValue(attrs.disabled)
       return input
     },

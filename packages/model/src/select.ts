@@ -15,7 +15,7 @@ export const SelectOptionType = type({
   disabled: 'boolean',
 })
 
-export const selectComponent = defineComponent<'select', typeof SelectType.infer, Context>((attrs, context) => {
+export const select = defineComponent<'select', typeof SelectType.infer, Context>((attrs, context) => {
   const select = document.createElement('select')
   if (attrs.model) {
     select.addEventListener('select', (e) => {
@@ -36,7 +36,7 @@ export const selectComponent = defineComponent<'select', typeof SelectType.infer
   }
 })
 
-export const selectOptionComponent = defineComponent<'option', typeof SelectOptionType.infer, Context>((attrs, _context) => {
+export const selectOption = defineComponent<'option', typeof SelectOptionType.infer, Context>((attrs, _context) => {
   const option = document.createElement('option')
   return {
     name: 'option',
