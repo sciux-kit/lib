@@ -1,0 +1,43 @@
+<flexbox>
+  <grid columns="1fr 1fr 1fr" gap="10px" row-gutter="50px">
+    <block align="center">button</block>
+    <let :button_value="0" />
+    <block align="center">
+      <button @click="button_value++">Click me</button>
+    </block>
+    <block align="center">{{ button_value }}</block>
+    <block align="center">input</block>
+    <let :input_value="0" />
+    <block align="center">
+      <input model="input_value" />
+    </block>
+    <block align="center">Input Value: {{ input_value }}</block>
+    <block>slider</block>
+    <let :slider_value="0" />
+    <block align="center">
+      <slider model="slider_value" :value="slider_value" />
+    </block>
+    <block align="center">Slider Value: {{ slider_value }}</block>
+    <block>checkbox</block>
+    <let :checkbox_value="false" />
+    <block align="center">
+      <checkbox model="checkbox_value" />
+    </block>
+    <block align="center">Checkbox Value: {{ checkbox_value }}</block>
+    <block>select</block>
+    <let :select_value="0" />
+    <block align="center">
+      <select model="select_value">
+        <option value="0">0</option>
+        <option value="1">1</option>
+      </select>
+    </block>
+    <block align="center">Select Value: {{ select_value }}</block>
+    <block>radio</block>
+    <let :radio_value="false" />
+    <block align="center">
+      <radio model="radio_value" group="radio_group" :value="radio_value" />
+    </block>
+    <block align="center">Radio Value: {{ radio_value }}</block>
+  </grid>
+</flexbox>

@@ -15,7 +15,7 @@
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.mts",
   "files": [
-    "dist"
+    "styles"
   ],
   "dependencies": {
     "@sciux/layout": "workspace:^",

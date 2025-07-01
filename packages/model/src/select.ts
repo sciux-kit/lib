@@ -1,4 +1,3 @@
-import type { Ref } from '@vue/reactivity'
 import type { Context } from 'sciux-laplace'
 import { toValue } from '@vue/reactivity'
 import { type } from 'arktype'
@@ -16,17 +15,17 @@ export const SelectOptionType = type({
 })
 
 export const select = defineComponent<'select', typeof SelectType.infer, Context>((attrs, context) => {
-  const select = document.createElement('select')
-  if (attrs.model) {
-    select.addEventListener('select', (e) => {
-      const target = e.target as HTMLSelectElement
-      (context[attrs.model!.value!] as Ref<string>).value = target.value
-    })
-  }
   return {
     name: 'select',
     attrs: SelectType,
     setup: (children) => {
+      const select = document.createElement('select')
+      if (attrs.model) {
+        select.addEventListener('select', (e) => {
+          const target = e.target as HTMLSelectElement
+          context[attrs.model!.value!] = target.value
+        })
+      }
       select.disabled = toValue(attrs.disabled)
       for (const child of children()) {
         select.appendChild(child)
@@ -41,10 +40,11 @@ export const selectOption = defineComponent<'option', typeof SelectOptionType.in
   return {
     name: 'option',
     attrs: SelectOptionType,
-    setup: () => {
+    setup: (children) => {
       option.value = toValue(attrs.value)
       option.selected = toValue(attrs.selected)
       option.disabled = toValue(attrs.disabled)
+      option.append(...children())
       return option
     },
   }

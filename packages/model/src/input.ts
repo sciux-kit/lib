@@ -1,4 +1,3 @@
-import type { Ref } from '@vue/reactivity'
 import type { Context } from 'sciux-laplace'
 
 import { toValue } from '@vue/reactivity'
@@ -12,16 +11,20 @@ const T = type({
 })
 
 export default defineComponent<'input', typeof T.infer, Context>((attrs, context) => {
-  const input = document.createElement('input')
-  if (attrs.model) {
-    input.addEventListener('input', (e) => {
-      (context[attrs.model!.value!] as Ref<string>).value = (e.target as HTMLInputElement).value
-    })
-  }
   return {
     name: 'input',
     attrs: T,
+    defaults: {
+      placeholder: '',
+      disabled: false,
+    },
     setup: () => {
+      const input = document.createElement('input')
+      if (attrs.model) {
+        input.addEventListener('input', (e) => {
+          context[attrs.model!.value!] = (e.target as HTMLInputElement).value
+        })
+      }
       input.placeholder = toValue(attrs.placeholder)
       input.disabled = toValue(attrs.disabled)
       return input
