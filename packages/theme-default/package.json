@@ -1,7 +1,7 @@
 {
   "name": "@sciux/theme-default",
   "type": "module",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Default theme for SciuxKit",
   "author": "BijonAI <info@bijon.ai>",
   "license": "MIT",
@@ -15,11 +15,8 @@
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.mts",
   "files": [
-    "dist"
+    "styles"
   ],
-  "scripts": {
-    "prepublishOnly": "nr build"
-  },
   "dependencies": {
     "@sciux/layout": "workspace:^",
     "@vue/reactivity": "^3.5.14",

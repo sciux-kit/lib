@@ -8,7 +8,6 @@ export default antfu(
   {
     rules: {
       'unused-imports/no-unused-vars': 'warn',
-
     },
   },
 )

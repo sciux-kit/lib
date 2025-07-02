@@ -33,6 +33,7 @@ export default defineComponent<'grid', typeof T.infer>((attrs, _context) => {
       element.style.gridTemplateColumns = toValue(attrs.columns) as string
       element.style.gridTemplateRows = toValue(attrs.rows) as string
       element.style.gap = theme.size(toValue(attrs.gutter))
+      element.style.width = '100%'
       element.style.columnGap = theme.size(toValue(attrs.columnGutter))
       element.style.rowGap = theme.size(toValue(attrs.rowGutter))
       element.style.justifyContent = toValue(attrs.align) as string

@@ -19,7 +19,7 @@ interface withLabelT {
   yLabel: (count: number) => string
 }
 
-export const plane = defineComponent<'plane', typeof T.infer & withLabelT>((attrs) => {
+export const plane = defineComponent<'plane', typeof T.infer>((attrs) => {
   return {
     name: 'plane',
     provides: {
@@ -41,7 +41,7 @@ export const plane = defineComponent<'plane', typeof T.infer & withLabelT>((attr
         y: attrs.y,
         division: attrs.division,
         range: attrs.domain,
-        label: ref((count: number) => count === 0 ? '' : attrs.xLabel.value(count)),
+        label: ref((count: number) => count === 0 ? '' : (attrs.xLabel.value as (count: number) => string)(count)),
         direction: attrs.xDirection,
       }, {})
       root.append(<Node> xAxis.setup?.(() => []))
@@ -51,10 +51,10 @@ export const plane = defineComponent<'plane', typeof T.infer & withLabelT>((attr
         y: attrs.y,
         division: attrs.division,
         range: attrs.range,
-        label: ref((count: number) => count === 0 ? '' : attrs.yLabel.value(count)),
+        label: ref((count: number) => count === 0 ? '' : (attrs.yLabel.value as (count: number) => string)(count)),
         direction: attrs.yDirection,
       }, {})
-      const originLabel = attrs.xLabel ? attrs.xLabel.value(0) : attrs.yLabel ? attrs.yLabel.value(0) : ''
+      const originLabel = attrs.xLabel ? (attrs.xLabel.value as (count: number) => string)(0) : attrs.yLabel ? (attrs.yLabel.value as (count: number) => string)(0) : ''
       const origin = document.createElementNS('http://www.w3.org/2000/svg', 'text')
       origin.setAttribute('x', (attrs.x.value + 10).toString())
       origin.setAttribute('y', (attrs.y.value + 10).toString())
