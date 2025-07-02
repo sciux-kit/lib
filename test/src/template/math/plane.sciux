@@ -1,5 +1,5 @@
 <canvas :width="600" :height="600" :origin="[300, 300]">
   <plane :x="0" :y="0" :division="25" :domain="[-10, 10]" :range="[-5, 5]" :x-label="count => count.toString()" :y-label="count => count.toString()">
-    <function :domain="[-10, 10]" :expr="(x) => Math.cos(x)" />
+    <function $="creation,1000,linear" :domain="[-10, 10]" :expr="(x) => Math.cos(x)" />
   </plane>
 </canvas>

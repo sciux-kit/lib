@@ -1,4 +1,4 @@
-import init, { applyTheme, render } from 'sciux'
+import init, { animationManager, applyTheme, render } from 'sciux'
 import examples from './examples'
 import '@sciux/theme-default/styles/main.css'
 
@@ -50,6 +50,7 @@ function createRenderer(source: string) {
     app.innerHTML = ''
     applyTheme('#app')
     render(source, app)
+    animationManager.init()
   }
 }
 
