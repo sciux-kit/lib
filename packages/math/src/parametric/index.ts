@@ -58,6 +58,7 @@ export const parametric = defineComponent<'parametric', typeof T.infer, {
       const { domain, range, expr, division } = attrs
       const { points } = describeImage(expr.value as (t: number) => [number, number], domain.value, range.value, context.division ?? division.value)
       const container = document.createElementNS('http://www.w3.org/2000/svg', 'g')
+      container.id = 'canvas-parametric'
       const path = document.createElementNS('http://www.w3.org/2000/svg', 'path')
       path.setAttribute('stroke', theme.pallete('primary'))
       path.setAttribute('fill', 'none')
@@ -71,15 +72,15 @@ export const parametric = defineComponent<'parametric', typeof T.infer, {
 })
 
 export const parametricCreation = defineAnimation<[], typeof T.infer>((node, _, { attrs }) => {
+  const el = node as HTMLElement
+  if (el.id !== 'canvas-parametric')
+    return
   const { length } = describeImage(attrs.expr.value as (t: number) => [number, number], attrs.domain.value, attrs.range.value, 25)
-  return {
-    validator: name => name === 'parametric',
-    setup(progress) {
-      if (progress >= 1) {
-        return true
-      }
-      ; (<SVGGElement>node).style.strokeDasharray = `${length * progress},${length * (1 - progress)}`
-      return false
-    },
+  return (progress) => {
+    if (progress >= 1) {
+      return true
+    }
+    ; (<SVGGElement>node).style.strokeDasharray = `${length * progress},${length * (1 - progress)}`
+    return false
   }
 })

@@ -35,6 +35,7 @@ export const circle = defineComponent<'circle', typeof T.infer>((attrs) => {
       container.setAttribute('transform', `translate(${attrs.x.value}, ${attrs.y.value})`)
       const path = document.createElementNS('http://www.w3.org/2000/svg', 'path')
       path.id = 'circle-path'
+      container.id = 'canvas-circle'
       path.setAttribute('d', describeArc([0, 0], attrs.radius.value, attrs.from.value, attrs.to.value))
       path.setAttribute('stroke', theme.pallete('primary'))
       path.setAttribute('fill', 'none')
@@ -48,15 +49,14 @@ export const circle = defineComponent<'circle', typeof T.infer>((attrs) => {
 
 export const circleCreation = defineAnimation((node: Node, _, { attrs }: { attrs: ToRefs<typeof T.infer> }) => {
   const el = node as HTMLElement
+  if (el.id !== 'canvas-circle')
+    return
   const path = el.querySelector('#circle-path') as SVGPathElement
-  return {
-    validator: name => name === 'circle',
-    setup(progress) {
-      if (progress > 1) {
-        return true
-      }
-      path.setAttribute('d', describeArc([0, 0], attrs.radius.value, attrs.from.value, attrs.from.value + (attrs.to.value - attrs.from.value) * progress))
-      return false
-    },
+  return (progress) => {
+    if (progress > 1) {
+      return true
+    }
+    path.setAttribute('d', describeArc([0, 0], attrs.radius.value, attrs.from.value, attrs.from.value + (attrs.to.value - attrs.from.value) * progress))
+    return false
   }
 })

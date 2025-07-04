@@ -39,6 +39,7 @@ export const angle = defineComponent<'angle', typeof T.infer>((attrs) => {
     },
     setup(children) {
       const container = document.createElementNS('http://www.w3.org/2000/svg', 'g')
+      container.id = 'canvas-angle'
       container.setAttribute('transform', `translate(${attrs.x.value}, ${attrs.y.value})`)
       const resolve = (value: number, length: number): { x1: number, y1: number, x2: number, y2: number } => {
         const radian = value * Math.PI / 180
@@ -105,24 +106,23 @@ export const angle = defineComponent<'angle', typeof T.infer>((attrs) => {
   }
 })
 
-export const angleCreation = defineAnimation((node: Node) => {
+export const angleCreation = defineAnimation((node: HTMLElement) => {
+  if (node.id !== 'canvas-angle')
+    return
   const el = node as HTMLElement
   const startSide = el.querySelector('#angle-start-side')
   const endSide = el.querySelector('#angle-end-side')
   const start = [Number(startSide?.getAttribute('x2')), Number(startSide?.getAttribute('y2'))]
   const end = [Number(endSide?.getAttribute('x2')), Number(endSide?.getAttribute('y2'))]
-  return {
-    validator: name => name === 'angle',
-    setup(progress) {
-      if (progress > 1) {
-        return true
-      }
-      startSide?.setAttribute('x2', (start[0] * progress).toString())
-      startSide?.setAttribute('y2', (start[1] * progress).toString())
-      endSide?.setAttribute('x2', (end[0] * progress).toString())
-      endSide?.setAttribute('y2', (end[1] * progress).toString())
-      return false
-    },
+  return (progress) => {
+    if (progress > 1) {
+      return true
+    }
+    startSide?.setAttribute('x2', (start[0] * progress).toString())
+    startSide?.setAttribute('y2', (start[1] * progress).toString())
+    endSide?.setAttribute('x2', (end[0] * progress).toString())
+    endSide?.setAttribute('y2', (end[1] * progress).toString())
+    return false
   }
 })
 

@@ -28,6 +28,7 @@ export const arc = defineComponent<'arc', typeof T.infer, {
     },
     setup() {
       const container = document.createElementNS('http://www.w3.org/2000/svg', 'g')
+      container.id = 'canvas-angle-arc'
       const angleValue = Math.abs((context.to - context.from + 360) % 360)
       const isRightAngle = Math.abs(angleValue - 90) < 1e-2
       if (isRightAngle) {
@@ -99,7 +100,7 @@ export const arc = defineComponent<'arc', typeof T.infer, {
   }
 })
 
-export const angleArcCreation = defineAnimation((node: Node, _, { context }: {
+export const angleArcCreation = defineAnimation((node: HTMLElement, _, { context }: {
   context: {
     from: number
     to: number
@@ -107,16 +108,15 @@ export const angleArcCreation = defineAnimation((node: Node, _, { context }: {
     endSide: number
   }
 }) => {
+  if (node.id !== 'canvas-angle-arc')
+    return
   const el = node as HTMLElement
   const path = el.querySelector('#angle-arc') as SVGPathElement
-  return {
-    validator: name => name === 'arc',
-    setup(progress) {
-      if (progress > 1) {
-        return true
-      }
-      path.setAttribute('d', describeArc([0, 0], (context.startSide ?? context.endSide) / 3, context.from, context.from - (context.from - context.to) * progress))
-      return false
-    },
+  return (progress) => {
+    if (progress > 1) {
+      return true
+    }
+    path.setAttribute('d', describeArc([0, 0], (context.startSide ?? context.endSide) / 3, context.from, context.from - (context.from - context.to) * progress))
+    return false
   }
 })
