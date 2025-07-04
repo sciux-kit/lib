@@ -29,6 +29,9 @@
 /* Size Table */
 :root {
   --sci-size-primary: 16px;
+  --sci-size-6xs: 6px;
+  --sci-size-5xs: 8px;
+  --sci-size-4xs: 10px;
   --sci-size-3xs: 12px;
   --sci-size-2xs: 14px;
   --sci-size-xs: 16px;

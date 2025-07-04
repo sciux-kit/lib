@@ -1,6 +1,7 @@
+import type { ToRefs } from 'sciux-laplace'
 import { theme } from '@sciux/utils-theme'
 import { type } from 'arktype'
-import { defineComponent } from 'sciux-laplace'
+import { defineAnimation, defineComponent } from 'sciux-laplace'
 import { LineType } from '../shared'
 import { resolveDasharray } from '../utils/line'
 import { generateTexNode } from '../utils/tex'
@@ -32,6 +33,7 @@ export const line = defineComponent<'line', typeof T.infer>((attrs, context) => 
       const container = document.createElementNS('http://www.w3.org/2000/svg', 'g')
       const path = document.createElementNS('http://www.w3.org/2000/svg', 'path')
       path.setAttribute('d', `M ${attrs.from.value[0]} ${attrs.from.value[1]} L ${attrs.to.value[0]} ${attrs.to.value[1]}`)
+      path.id = 'line-path'
       path.setAttribute('stroke', theme.pallete('primary'))
       path.setAttribute('stroke-dasharray', resolveDasharray(attrs.type.value))
       const texElement = generateTexNode(attrs.value?.value)
@@ -46,6 +48,22 @@ export const line = defineComponent<'line', typeof T.infer>((attrs, context) => 
       return container
     },
     space,
+  }
+})
+
+export const lineCreation = defineAnimation((node: HTMLElement, _, { attrs }: { attrs: ToRefs<typeof T.infer> }) => {
+  const line = node.querySelector('#line-path') as SVGPathElement
+  if (!line)
+    return
+  const from = attrs.from.value
+  const to = attrs.to.value
+  return {
+    validator: name => name === 'line',
+    setup(progress) {
+      if (progress > 1)
+        return true
+      line.setAttribute('d', `M ${from[0]} ${from[1]} L ${(from[0] + (to[0] - from[0]) * progress)} ${(from[1] + (to[1] - from[1]) * progress)}`)
+    },
   }
 })
 

@@ -1,6 +1,6 @@
 import { theme } from '@sciux/utils-theme'
 import { type } from 'arktype'
-import { defineComponent } from 'sciux-laplace'
+import { defineAnimation, defineComponent } from 'sciux-laplace'
 import { LineType } from '../shared'
 import { describeArc } from '../utils/arc-path'
 import { resolveDasharray } from '../utils/line'
@@ -24,11 +24,13 @@ export const arc = defineComponent<'arc', typeof T.infer, {
     attrs: T,
     defaults: {
       value: '',
+      type: 'solid',
     },
     setup() {
       const container = document.createElementNS('http://www.w3.org/2000/svg', 'g')
       const path = document.createElementNS('http://www.w3.org/2000/svg', 'path')
-      path.setAttribute('d', describeArc([context.x, context.y], (context.startSide ?? context.endSide) / 3, context.from, context.to))
+      path.id = 'angle-arc'
+      path.setAttribute('d', describeArc([0, 0], (context.startSide ?? context.endSide) / 3, context.from, context.to))
       path.setAttribute('stroke', theme.pallete('primary'))
       path.setAttribute('fill', 'none')
       path.setAttribute('stroke-dasharray', resolveDasharray(attrs.type.value))
@@ -44,6 +46,25 @@ export const arc = defineComponent<'arc', typeof T.infer, {
       texContainer.append(texElement)
       container.append(path, texContainer)
       return container
+    },
+  }
+})
+
+export const angleArcCreation = defineAnimation((node: HTMLElement, _, { context }: {
+  context: {
+    from: number
+    to: number
+    startSide: number
+    endSide: number
+  }
+}) => {
+  const path = node.querySelector('#angle-arc') as SVGPathElement
+  return {
+    validator: name => name === 'arc',
+    setup(progress) {
+      if (progress > 1)
+        return true
+      path.setAttribute('d', describeArc([0, 0], (context.startSide ?? context.endSide) / 3, context.from, context.from - (context.from - context.to) * progress))
     },
   }
 })

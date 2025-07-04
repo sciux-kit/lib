@@ -12,8 +12,8 @@ export const angleStartPoint = defineComponent<'start-point', typeof InfoPointTy
     attrs: InfoPointType,
     globals: {
       [attrs.as.value]: [
-        context.startSide * Math.cos(context.from * Math.PI / 180),
-        context.startSide * Math.sin(context.from * Math.PI / 180),
+        context.startSide * Math.cos(context.from * Math.PI / 180) + context.x,
+        context.startSide * Math.sin(context.from * Math.PI / 180) + context.y,
       ],
     },
   }
@@ -30,8 +30,8 @@ export const angleEndPoint = defineComponent<'end-point', typeof InfoPointType.i
     attrs: InfoPointType,
     globals: {
       [attrs.as.value]: [
-        context.endSide * Math.cos(context.to * Math.PI / 180),
-        context.endSide * Math.sin(context.to * Math.PI / 180),
+        context.endSide * Math.cos(context.to * Math.PI / 180) + context.x,
+        context.endSide * Math.sin(context.to * Math.PI / 180) + context.y,
       ],
     },
   }

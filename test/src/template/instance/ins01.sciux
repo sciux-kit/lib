@@ -1,0 +1,25 @@
+<flexbox>
+  <rows>
+    <flexbox>
+      <canvas :width="300" :height="300" :origin="[150, 50]">
+        <let :d="30"/>
+        <angle $="creation,1000" :from="120" :to="150" :start-side="2.3*d" :end-side="4*d" :x="100" :y="0" start-side-value="2.3 \times d" end-side-value="4 \times d">
+          <start-point as="A" />
+          <end-point as="B" />
+          <origin as="O" />
+          <arc $="creation,1000" type="solid" value="30 \degree"/>
+        </angle>
+        <line $="creation,1000" :from="B" :to="A" type="solid" value="C" />
+        <let :P="[O[0], A[1]]" />
+        <line $="creation,1000" :from="P" :to="O" type="dashed" />
+        <line $="creation,1000" :from="P" :to="A" type="dashed" />
+      </canvas>
+    </flexbox>
+    <rows>
+      <flexbox>
+        <input model="value" />
+        <checkbox model="checked" />
+      </flexbox>
+    </rows>
+  </rows>
+</flexbox>

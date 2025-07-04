@@ -26,7 +26,8 @@ export default defineComponent<'tex', typeof T.infer, {
         container.setAttribute('width', '100%')
         container.setAttribute('height', '100%')
         const subContainer = document.createElement('div')
-        subContainer.style.color = theme.pallete('note')
+        subContainer.style.color = theme.pallete('primary')
+        subContainer.style.fontSize = theme.size('5xs')
         subContainer.innerHTML = html
         container.append(subContainer)
       }
