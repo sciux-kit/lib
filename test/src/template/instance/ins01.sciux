@@ -3,24 +3,53 @@
     <flexbox>
       <canvas :width="300" :height="300" :origin="[150, 50]">
         <let :d="30"/>
-        <angle $="creation,1000" :from="120" :to="150" :start-side="2.3*d" :end-side="4*d" :x="100" :y="0" start-side-value="2.3 \times d" end-side-value="4 \times d">
-          <start-point as="A" />
-          <end-point as="B" />
-          <origin as="O" />
-          <arc $="creation,1000" type="solid" value="30 \degree"/>
+        <angle $="creation,1000,ease-in-cubic" :from="120" :to="150" :start-side="2.3*d" :end-side="4*d" :x="100" :y="0" start-side-value="2.3 \times d" end-side-value="4 \times d">
+          <start-point as="A" value="A"/>
+          <end-point as="B" value="B"/>
+          <origin as="O" value="O"/>
+          <arc $="creation,1000,ease-in-cubic" type="solid" value="30 \degree"/>
         </angle>
-        <line $="creation,1000" :from="B" :to="A" type="solid" value="C" />
+        <line $="creation,1000,ease-in-cubic" :from="B" :to="A" type="solid" value="C" />
         <let :P="[O[0], A[1]]" />
-        <circle $="creation,1000" :x="middle(O, B)[0]" :y="middle(O, B)[1]" :radius="2 * d" />
-        <line $="creation,1000" :from="P" :to="O" type="dashed" />
-        <line $="creation,1000" :from="P" :to="A" type="dashed" />
+        <circle $="creation,1000,ease-in-cubic" :x="middle(O, B)[0]" :y="middle(O, B)[1]" :radius="2 * d" type="dashed" />
+        <line $="creation,1000,ease-in-cubic" :from="P" :to="O" type="dashed" />
+        <line $="creation,1000,ease-in-cubic" :from="P" :to="A" type="dashed" />
       </canvas>
     </flexbox>
-    <rows>
-      <flexbox>
-        <input model="value" />
-        <checkbox model="checked" />
-      </flexbox>
-    </rows>
+    <columns>
+      <flexbox>1. Find the length of line <tex>AB</tex></flexbox>
+      <columns>
+        <tex>
+          AB = OA^2 + OB^2 - 2 \cdot OA \cdot OB \cdot \cos \angle AOB
+        </tex>
+        <tex>
+          = 2 \cdot d^2 - 2 \cdot d^2 \cdot \cos 30^\circ
+        </tex>
+        <tex>
+          = 2 \cdot d^2 \cdot (1 - \cos 30^\circ)
+        </tex>
+        <tex>
+          = 2 \cdot d^2 \cdot \left(1 - \frac{\sqrt{3}}{2}\right)
+        </tex>
+        <tex>
+          = 2 \cdot d^2 \cdot \left(\frac{2 - \sqrt{3}}{2}\right)
+        </tex>
+        <tex>
+          = 2 \cdot d^2 \cdot \left(\frac{2 - \sqrt{3}}{2}\right)
+        </tex>
+        <tex>
+          = d^2 \cdot (2 - \sqrt{3})
+        </tex>
+        <tex>
+          = 30^2 \cdot (2 - \sqrt{3})
+        </tex>
+        <tex>
+          = 900 \cdot (2 - \sqrt{3})
+        </tex>
+        <tex>
+          = 1800 - 900 \cdot \sqrt{3}
+        </tex>
+      </columns>
+    </columns>
   </rows>
 </flexbox>
