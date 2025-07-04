@@ -105,20 +105,23 @@ export const angle = defineComponent<'angle', typeof T.infer>((attrs) => {
   }
 })
 
-export const angleCreation = defineAnimation((node: HTMLElement) => {
-  const startSide = node.querySelector('#angle-start-side')
-  const endSide = node.querySelector('#angle-end-side')
+export const angleCreation = defineAnimation((node: Node) => {
+  const el = node as HTMLElement
+  const startSide = el.querySelector('#angle-start-side')
+  const endSide = el.querySelector('#angle-end-side')
   const start = [Number(startSide?.getAttribute('x2')), Number(startSide?.getAttribute('y2'))]
   const end = [Number(endSide?.getAttribute('x2')), Number(endSide?.getAttribute('y2'))]
   return {
     validator: name => name === 'angle',
     setup(progress) {
-      if (progress > 1)
+      if (progress > 1) {
         return true
+      }
       startSide?.setAttribute('x2', (start[0] * progress).toString())
       startSide?.setAttribute('y2', (start[1] * progress).toString())
       endSide?.setAttribute('x2', (end[0] * progress).toString())
       endSide?.setAttribute('y2', (end[1] * progress).toString())
+      return false
     },
   }
 })

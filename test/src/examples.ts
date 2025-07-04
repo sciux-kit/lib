@@ -1,5 +1,6 @@
 import test from './example.sciux?raw'
 import ins01 from './template/instance/ins01.sciux?raw'
+import ins02 from './template/instance/ins02.sciux?raw'
 import angle from './template/math/angle.sciux?raw'
 import circle from './template/math/circle.sciux?raw'
 import figure from './template/math/figure.sciux?raw'
@@ -21,5 +22,6 @@ export default {
   },
   'INSTANCE': {
     ins01,
+    ins02,
   },
 }

@@ -30,12 +30,12 @@ export const arc = defineComponent<'arc', typeof T.infer, {
       const container = document.createElementNS('http://www.w3.org/2000/svg', 'g')
       const path = document.createElementNS('http://www.w3.org/2000/svg', 'path')
       path.id = 'angle-arc'
-      path.setAttribute('d', describeArc([0, 0], (context.startSide ?? context.endSide) / 3, context.from, context.to))
+      path.setAttribute('d', describeArc([0, 0], Math.min(context.startSide ?? 0, context.endSide ?? 0) / 3, context.from, context.to))
       path.setAttribute('stroke', theme.pallete('primary'))
       path.setAttribute('fill', 'none')
       path.setAttribute('stroke-dasharray', resolveDasharray(attrs.type.value))
       const texElement = generateTexNode(attrs.value?.value)
-      const length = (context.startSide ?? context.endSide) / 3
+      const length = Math.min(context.startSide ?? 0, context.endSide ?? 0) / 3
       const angle = context.from + (context.to - context.from) / 2
       const position = [
         length * Math.cos(angle * Math.PI / 180),
@@ -50,7 +50,7 @@ export const arc = defineComponent<'arc', typeof T.infer, {
   }
 })
 
-export const angleArcCreation = defineAnimation((node: HTMLElement, _, { context }: {
+export const angleArcCreation = defineAnimation((node: Node, _, { context }: {
   context: {
     from: number
     to: number
@@ -58,13 +58,16 @@ export const angleArcCreation = defineAnimation((node: HTMLElement, _, { context
     endSide: number
   }
 }) => {
-  const path = node.querySelector('#angle-arc') as SVGPathElement
+  const el = node as HTMLElement
+  const path = el.querySelector('#angle-arc') as SVGPathElement
   return {
     validator: name => name === 'arc',
     setup(progress) {
-      if (progress > 1)
+      if (progress > 1) {
         return true
+      }
       path.setAttribute('d', describeArc([0, 0], (context.startSide ?? context.endSide) / 3, context.from, context.from - (context.from - context.to) * progress))
+      return false
     },
   }
 })

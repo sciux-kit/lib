@@ -46,14 +46,17 @@ export const circle = defineComponent<'circle', typeof T.infer>((attrs) => {
   }
 })
 
-export const circleCreation = defineAnimation((node: HTMLElement, _, { attrs }: { attrs: ToRefs<typeof T.infer> }) => {
-  const path = node.querySelector('#circle-path') as SVGPathElement
+export const circleCreation = defineAnimation((node: Node, _, { attrs }: { attrs: ToRefs<typeof T.infer> }) => {
+  const el = node as HTMLElement
+  const path = el.querySelector('#circle-path') as SVGPathElement
   return {
     validator: name => name === 'circle',
     setup(progress) {
-      if (progress > 1)
+      if (progress > 1) {
         return true
+      }
       path.setAttribute('d', describeArc([0, 0], attrs.radius.value, attrs.from.value, attrs.from.value + (attrs.to.value - attrs.from.value) * progress))
+      return false
     },
   }
 })

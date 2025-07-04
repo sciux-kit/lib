@@ -51,18 +51,20 @@ export const line = defineComponent<'line', typeof T.infer>((attrs, context) => 
   }
 })
 
-export const lineCreation = defineAnimation((node: HTMLElement, _, { attrs }: { attrs: ToRefs<typeof T.infer> }) => {
-  const line = node.querySelector('#line-path') as SVGPathElement
-  if (!line)
-    return
+export const lineCreation = defineAnimation((node: Node, _, { attrs }: { attrs: ToRefs<typeof T.infer> }) => {
+  const el = node as HTMLElement
+  const line = el.querySelector('#line-path') as SVGPathElement
   const from = attrs.from.value
   const to = attrs.to.value
   return {
     validator: name => name === 'line',
     setup(progress) {
+      if (!line)
+        return true
       if (progress > 1)
         return true
       line.setAttribute('d', `M ${from[0]} ${from[1]} L ${(from[0] + (to[0] - from[0]) * progress)} ${(from[1] + (to[1] - from[1]) * progress)}`)
+      return false
     },
   }
 })
