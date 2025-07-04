@@ -11,6 +11,7 @@
         </angle>
         <line $="creation,1000" :from="B" :to="A" type="solid" value="C" />
         <let :P="[O[0], A[1]]" />
+        <circle $="creation,1000" :x="middle(O, B)[0]" :y="middle(O, B)[1]" :radius="2 * d" />
         <line $="creation,1000" :from="P" :to="O" type="dashed" />
         <line $="creation,1000" :from="P" :to="A" type="dashed" />
       </canvas>

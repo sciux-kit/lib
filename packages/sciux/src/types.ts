@@ -1,4 +1,4 @@
-import type { animations, ComponentSpace, flows, textModes } from 'sciux-laplace'
+import type { animations, ComponentSpace, Context, flows, textModes } from 'sciux-laplace'
 
 export type Flows = typeof flows
 export type Animations = typeof animations
@@ -8,4 +8,5 @@ export interface RegisterContext {
   flows: Flows
   animations: Animations
   textModes: TextModes
+  context: Context
 }

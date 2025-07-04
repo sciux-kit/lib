@@ -1,16 +1,19 @@
+import type { Context } from 'sciux-laplace'
 import type { RegisterContext } from './types'
 import { theme } from '@sciux/utils-theme'
-import { animations, flows, root, textModes } from 'sciux-laplace'
+import { addActiveContext, animations, flows, reactive, root, textModes } from 'sciux-laplace'
 import layout from './layout'
 import math from './math'
 import model from './model'
 import widget from './widget'
 
+const context: Context = reactive({})
 const defaultContext: RegisterContext = {
   root,
   flows,
   animations,
   textModes,
+  context,
 }
 const registers = [widget, model, layout, math]
 animations.set('creation', [])
@@ -19,6 +22,7 @@ export default function (context: RegisterContext = defaultContext): void {
   for (const register of registers) {
     register(context)
   }
+  addActiveContext(context.context)
 }
 
 export function applyTheme(selector: string): void {

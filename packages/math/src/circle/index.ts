@@ -1,6 +1,7 @@
+import type { ToRefs } from 'sciux-laplace'
 import { theme } from '@sciux/utils-theme'
 import { type } from 'arktype'
-import { defineComponent } from 'sciux-laplace'
+import { defineAnimation, defineComponent } from 'sciux-laplace'
 import { LineType } from '../shared'
 import { describeArc } from '../utils/arc-path'
 import { resolveDasharray } from '../utils/line'
@@ -33,7 +34,8 @@ export const circle = defineComponent<'circle', typeof T.infer>((attrs) => {
       const container = document.createElementNS('http://www.w3.org/2000/svg', 'g')
       container.setAttribute('transform', `translate(${attrs.x.value}, ${attrs.y.value})`)
       const path = document.createElementNS('http://www.w3.org/2000/svg', 'path')
-      path.setAttribute('d', describeArc([attrs.x.value, attrs.y.value], attrs.radius.value, attrs.from.value, attrs.to.value))
+      path.id = 'circle-path'
+      path.setAttribute('d', describeArc([0, 0], attrs.radius.value, attrs.from.value, attrs.to.value))
       path.setAttribute('stroke', theme.pallete('primary'))
       path.setAttribute('fill', 'none')
       path.setAttribute('stroke-dasharray', resolveDasharray(attrs.type.value))
@@ -41,5 +43,17 @@ export const circle = defineComponent<'circle', typeof T.infer>((attrs) => {
       return container
     },
     space,
+  }
+})
+
+export const circleCreation = defineAnimation((node: HTMLElement, _, { attrs }: { attrs: ToRefs<typeof T.infer> }) => {
+  const path = node.querySelector('#circle-path') as SVGPathElement
+  return {
+    validator: name => name === 'circle',
+    setup(progress) {
+      if (progress > 1)
+        return true
+      path.setAttribute('d', describeArc([0, 0], attrs.radius.value, attrs.from.value, attrs.from.value + (attrs.to.value - attrs.from.value) * progress))
+    },
   }
 })

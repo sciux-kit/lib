@@ -7,3 +7,5 @@ export * from './line'
 export * from './parametric'
 export * from './plane'
 export * from './shared'
+
+export * as tools from './tools'
