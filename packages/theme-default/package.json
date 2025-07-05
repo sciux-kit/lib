@@ -1,7 +1,7 @@
 {
   "name": "@sciux/theme-default",
   "type": "module",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Default theme for SciuxKit",
   "author": "BijonAI <info@bijon.ai>",
   "license": "MIT",
