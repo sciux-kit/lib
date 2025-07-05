@@ -1,6 +1,8 @@
 <canvas :width="1000" :height="1000" :origin="[500, 500]">
-  <plane :range="[-5, 5]" :domain="[-5, 5]" :x="0" :y="0" :division="25" $="creation,1000,in-out-cubic">
+  <let :y="3.5" :x="2"  />
+  <plane :range="[-5, 5]" :domain="[-5, 5]" :x="0" :y="0" :division="25" $="parallel(creation,1000,in-out-cubic y(-5),1000,in-out-cubic x(-5),1000,in-out-cubic)">
     <parametric $="creation,1000,in-out-cubic" :domain="[-10, 10]" :range="[-10, 10]" :expr="(t) => [Math.cos(t) * (Math.exp(Math.cos(t)) - 2 * Math.cos(4 * t) - Math.pow(Math.sin(t / 12), 5)), Math.sin(t) * (Math.exp(Math.cos(t)) - 2 * Math.cos(4 * t) - Math.pow(Math.sin(t / 12), 5))]" />
-    <projection :x="3.5" :y="2" type="both" value="\\left(3.5, 2\\right)" $="creation,1000,in-out-cubic" />
+    <projection :x="x" :y="y" type="both" :value="`\\left(${x.toFixed(1)}, ${y.toFixed(1)}\\right)`" $="creation,1000,in-out-cubic" />
+    <vector :from="[0, 0]" :to="[x, y]" $="creation,1000,in-out-cubic" />
   </plane>
 </canvas>
