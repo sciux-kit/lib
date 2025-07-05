@@ -106,10 +106,10 @@ export const angle = defineComponent<'angle', typeof T.infer>((attrs) => {
   }
 })
 
-export const angleCreation = defineAnimation((node: HTMLElement) => {
-  if (node.id !== 'canvas-angle')
-    return
+export const angleCreation = defineAnimation((node: Node) => {
   const el = node as HTMLElement
+  if (el.id !== 'canvas-angle')
+    return
   const startSide = el.querySelector('#angle-start-side')
   const endSide = el.querySelector('#angle-end-side')
   const start = [Number(startSide?.getAttribute('x2')), Number(startSide?.getAttribute('y2'))]

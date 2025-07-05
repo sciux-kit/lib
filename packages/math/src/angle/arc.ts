@@ -100,7 +100,7 @@ export const arc = defineComponent<'arc', typeof T.infer, {
   }
 })
 
-export const angleArcCreation = defineAnimation((node: HTMLElement, _, { context }: {
+export const angleArcCreation = defineAnimation((node: Node, _, { context }: {
   context: {
     from: number
     to: number
@@ -108,15 +108,15 @@ export const angleArcCreation = defineAnimation((node: HTMLElement, _, { context
     endSide: number
   }
 }) => {
-  if (node.id !== 'canvas-angle-arc')
-    return
   const el = node as HTMLElement
+  if (el.id !== 'canvas-angle-arc')
+    return
   const path = el.querySelector('#angle-arc') as SVGPathElement
   return (progress) => {
     if (progress > 1) {
       return true
     }
-    path.setAttribute('d', describeArc([0, 0], (context.startSide ?? context.endSide) / 3, context.from, context.from - (context.from - context.to) * progress))
+    path.setAttribute('d', describeArc([0, 0], Math.min(context.startSide ?? 0, context.endSide ?? 0) / 3, context.from, context.from - (context.from - context.to) * progress))
     return false
   }
 })

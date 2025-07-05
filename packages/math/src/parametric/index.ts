@@ -68,6 +68,10 @@ export const parametric = defineComponent<'parametric', typeof T.infer, {
       container.append(path, ...children())
       return container
     },
+    provides: {
+      expr: attrs.expr,
+      division: context.division ?? attrs.division,
+    },
   }
 })
 

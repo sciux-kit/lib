@@ -43,6 +43,7 @@ export const func = defineComponent<'function', typeof T.infer, {
     },
     provides: {
       expr: attrs.expr,
+      division: context.division ?? attrs.division,
     },
     setup: (children) => {
       const { domain, division, expr } = attrs

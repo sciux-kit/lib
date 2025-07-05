@@ -1,5 +1,5 @@
 <canvas :width="1000" :height="1000" :origin="[500, 500]">
-  <plane :range="[-5, 5]" :domain="[-5, 5]" :x="0" :y="0" :division="25">
+  <plane :range="[-5, 5]" :domain="[-5, 5]" :x="0" :y="0" :division="25" $="creation,1000,in-out-cubic">
     <parametric $="creation,3500,linear" :domain="[-10, 10]" :range="[-10, 10]" :expr="(t) => [Math.cos(t) * (Math.exp(Math.cos(t)) - 2 * Math.cos(4 * t) - Math.pow(Math.sin(t / 12), 5)), Math.sin(t) * (Math.exp(Math.cos(t)) - 2 * Math.cos(4 * t) - Math.pow(Math.sin(t / 12), 5))]" />
   </plane>
 </canvas>
