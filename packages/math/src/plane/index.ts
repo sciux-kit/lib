@@ -3,6 +3,7 @@ import { theme } from '@sciux/utils-theme'
 import { type } from 'arktype'
 import { defineAnimation, defineComponent, ref } from 'sciux-laplace'
 import { axis } from '../axis'
+import { projection } from './projection'
 
 const T = type({
   x: type.number,
@@ -21,7 +22,10 @@ interface withLabelT {
 }
 
 export const plane = defineComponent<'plane', typeof T.infer>((attrs) => {
+  const space = new Map()
+  space.set('projection', projection)
   return {
+    space,
     name: 'plane',
     provides: {
       division: attrs.division.value,
@@ -154,3 +158,5 @@ export const planeCreation = defineAnimation((node: Node, _, { attrs, context }:
     return false
   }
 })
+
+export { projectionCreation } from './projection'
