@@ -1,6 +1,6 @@
 import { theme } from '@sciux/utils-theme'
 import { type } from 'arktype'
-import { defineComponent } from 'sciux-laplace'
+import { defineAnimation, defineComponent } from 'sciux-laplace'
 import { LineType } from '../shared'
 import { describeArc } from '../utils/arc-path'
 import { resolveDasharray } from '../utils/line'
@@ -28,6 +28,7 @@ export const bounding = defineComponent<'bounding', typeof T.infer, {
     },
     setup() {
       const container = document.createElementNS('http://www.w3.org/2000/svg', 'g')
+      container.id = 'canvas-bounding'
       const pathString = describeArc([context.x, context.y], context.startSide ?? context.endSide, context.from, context.to)
       const path = document.createElementNS('http://www.w3.org/2000/svg', 'path')
       path.setAttribute('d', pathString)
@@ -48,5 +49,25 @@ export const bounding = defineComponent<'bounding', typeof T.infer, {
       container.append(path, texContainer)
       return container
     },
+  }
+})
+
+export const boundingCreation = defineAnimation((node: Node, _, { context }: { context: {
+  x: number
+  y: number
+  from: number
+  to: number
+  startSide?: number
+  endSide: number
+} }) => {
+  const el = node as HTMLElement
+  if (el.id !== 'canvas-bounding')
+    return
+  const path = el.querySelector('#canvas-bounding-path') as SVGPathElement
+  return (progress) => {
+    if (progress > 1)
+      return true
+    path.setAttribute('d', describeArc([0, 0], Math.min(context.startSide ?? 0, context.endSide ?? 0), context.from, context.from - (context.from - context.to) * progress))
+    return false
   }
 })

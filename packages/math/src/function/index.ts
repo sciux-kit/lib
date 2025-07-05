@@ -43,10 +43,12 @@ export const func = defineComponent<'function', typeof T.infer, {
     },
     provides: {
       expr: attrs.expr,
+      division: context.division ?? attrs.division,
     },
     setup: (children) => {
       const { domain, division, expr } = attrs
       const container = document.createElementNS('http://www.w3.org/2000/svg', 'g')
+      container.id = 'canvas-function'
       const path = document.createElementNS('http://www.w3.org/2000/svg', 'path')
       path.setAttribute('stroke', theme.pallete('info'))
       path.setAttribute('fill', 'none')
@@ -62,15 +64,15 @@ export const func = defineComponent<'function', typeof T.infer, {
 })
 
 export const funcCreation = defineAnimation<[], typeof T.infer>((node, _, { attrs }) => {
+  const el = node as HTMLElement
+  if (el.id !== 'canvas-function')
+    return
   const { length } = describeImage(attrs.expr.value as (x: number) => number, attrs.domain.value, 25)
-  return {
-    validator: name => name === 'function',
-    setup(progress) {
-      if (progress >= 1) {
-        return true
-      }
-      ;(<SVGGElement>node).style.strokeDasharray = `${length * progress},${length * (1 - progress)}`
-      return false
-    },
+  return (progress) => {
+    if (progress >= 1) {
+      return true
+    }
+    ; (<SVGGElement>node).style.strokeDasharray = `${length * progress},${length * (1 - progress)}`
+    return false
   }
 })

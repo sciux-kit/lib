@@ -8,12 +8,16 @@ const T = type({
 
 export const pointOn = defineComponent<'point-on', typeof T.infer, {
   expr: (x: number) => number
+  division?: number
 }>((attrs, context) => {
       return {
         name: 'point-on',
         attrs: T,
         globals: {
-          [attrs.as.value]: context.expr(attrs.x.value),
+          [attrs.as.value]: [
+            attrs.x.value * (context.division ?? 1),
+            context.expr(attrs.x.value) * (context.division ?? 1),
+          ],
         },
       }
     })

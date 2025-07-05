@@ -1,0 +1,3 @@
+<canvas :width="600" :height="600" :origin="[300, 300]">
+  <axis :x="0" :y="0" :division="25" :range="[-10, 10]" direction="left" $="creation,1000,in-out-cubic" />
+</canvas>
