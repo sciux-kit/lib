@@ -7,6 +7,7 @@ import circle from './template/math/circle.sciux?raw'
 import figure from './template/math/figure.sciux?raw'
 import parametric from './template/math/parametric.sciux?raw'
 import plane from './template/math/plane.sciux?raw'
+import mermaid from './template/mermaid.sciux?raw'
 import model from './template/model.sciux?raw'
 import widget from './template/widget.sciux?raw'
 
@@ -26,4 +27,5 @@ export default {
     ins01,
     ins02,
   },
+  mermaid,
 }

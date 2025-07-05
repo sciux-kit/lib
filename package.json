@@ -17,6 +17,9 @@
     "prepare": "simple-git-hooks",
     "preview": "pnpm vite ./test"
   },
+  "dependencies": {
+    "mermaid": "^11.8.0"
+  },
   "devDependencies": {
     "@antfu/eslint-config": "catalog:",
     "@antfu/ni": "catalog:",
