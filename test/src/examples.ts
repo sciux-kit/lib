@@ -4,6 +4,7 @@ import ins02 from './template/instance/ins02.sciux?raw'
 import angle from './template/math/angle.sciux?raw'
 import axis from './template/math/axis.sciux?raw'
 import circle from './template/math/circle.sciux?raw'
+import dot from './template/math/dot.sciux?raw'
 import figure from './template/math/figure.sciux?raw'
 import parametric from './template/math/parametric.sciux?raw'
 import plane from './template/math/plane.sciux?raw'
@@ -22,6 +23,7 @@ export default {
     plane,
     parametric,
     axis,
+    dot,
   },
   'INSTANCE': {
     ins01,

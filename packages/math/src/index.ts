@@ -1,6 +1,7 @@
 export * from './angle'
 export * from './axis'
 export * from './circle'
+export * from './dot'
 export * from './figure'
 export * from './function'
 export * from './line'
