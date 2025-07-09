@@ -18,9 +18,13 @@ export const lineStartPoint = defineComponent<'start-point', typeof InfoPointTyp
       container.append(texElement)
       return container
     },
-    globals: {
-      [attrs.as.value]: context.from,
-    },
+    globals: (() => {
+      if ('as' in attrs) {
+        return {
+          [attrs.as.value]: context.from,
+        }
+      }
+    })(),
   }
 })
 
@@ -40,8 +44,12 @@ export const lineEndPoint = defineComponent<'end-point', typeof InfoPointType.in
       container.append(texElement)
       return container
     },
-    globals: {
-      [attrs.as.value]: context.to,
-    },
+    globals: (() => {
+      if ('as' in attrs) {
+        return {
+          [attrs.as.value]: context.to,
+        }
+      }
+    })(),
   }
 })

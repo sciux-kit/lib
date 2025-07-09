@@ -15,9 +15,13 @@ export const angleStartPoint = defineComponent<'start-point', typeof InfoPointTy
   return {
     name: 'start-point',
     attrs: InfoPointType,
-    globals: {
-      [attrs.as.value]: position,
-    },
+    globals: (() => {
+      if ('as' in attrs) {
+        return {
+          [attrs.as.value]: position,
+        }
+      }
+    })(),
     defaults: {
       value: '',
     },
@@ -44,9 +48,13 @@ export const angleEndPoint = defineComponent<'end-point', typeof InfoPointType.i
   return {
     name: 'end-point',
     attrs: InfoPointType,
-    globals: {
-      [attrs.as.value]: position,
-    },
+    globals: (() => {
+      if ('as' in attrs) {
+        return {
+          [attrs.as.value]: position,
+        }
+      }
+    })(),
     defaults: {
       value: '',
     },
@@ -67,9 +75,13 @@ export const origin = defineComponent<'origin', typeof InfoPointType.infer, {
   return {
     name: 'origin',
     attrs: InfoPointType,
-    globals: {
-      [attrs.as.value]: [context.x, context.y],
-    },
+    globals: (() => {
+      if ('as' in attrs) {
+        return {
+          [attrs.as.value]: [context.x, context.y],
+        }
+      }
+    })(),
     defaults: {
       value: '',
     },

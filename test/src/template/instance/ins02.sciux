@@ -14,7 +14,6 @@
     <let :to="angleA < angleB ? angleB : angleA" />
     <let :startSide="angleA < angleB ? sideA : sideB" />
     <let :endSide="angleA < angleB ? sideB : sideA" />
-    <line :from="A" :to="B" type="solid" value="O" />
     <angle
       :from="from"
       :to="to"
@@ -23,12 +22,13 @@
       :x="P[0]"
       :y="P[1]"
     >
-      <start-point as="A" value="A" />
-      <end-point as="B" value="B" />
-      <origin as="P" value="P" />
+      <start-point as="BB" value="A" />
+      <end-point as="AA" value="B" />
+      <origin value="P" />
       <arc type="solid" value="90 \degree" />
     </angle>
-    <line :from="O" :to="P" type="dashed" />
+    <line :from="AA" :to="BB" type="solid" value="O" />
+    <line :from="P" :to="O" type="dotted" />
     <circle $="v(1080),10000" :x="O[0]" :y="O[1]" :radius="2 * d" />
   </canvas>
 </flexbox>
