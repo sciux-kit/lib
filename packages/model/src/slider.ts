@@ -14,6 +14,10 @@ export default defineComponent<'slider', typeof T.infer, Context>((attrs, contex
   return {
     name: 'slider',
     attrs: T,
+    defaults: {
+      value: 0,
+      disabled: false,
+    },
     setup: () => {
       const input = document.createElement('input')
       input.type = 'range'

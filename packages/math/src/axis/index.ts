@@ -27,6 +27,9 @@ export const axis = defineComponent<'axis', typeof T.infer>((attrs) => {
       // division: 20,
       label: (count: number) => count.toString(),
       direction: 'right',
+      x: 0,
+      y: 0,
+      range: [-5, 5],
     },
     setup(children) {
       const root = document.createElementNS('http://www.w3.org/2000/svg', 'g')

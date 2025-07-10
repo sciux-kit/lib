@@ -8,12 +8,18 @@ const T = type({
   model: 'string',
   group: 'string',
   value: 'string',
+  disabled: 'boolean',
 })
 
 export default defineComponent<'radio', typeof T.infer, Context>((attrs, context) => {
   return {
     name: 'radio',
     attrs: T,
+    defaults: {
+      value: '',
+      group: '__default_radio_group',
+      disabled: false,
+    },
     setup: () => {
       const input = document.createElement('input')
       input.type = 'radio'

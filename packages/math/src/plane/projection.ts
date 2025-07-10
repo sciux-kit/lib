@@ -20,6 +20,8 @@ export const projection = defineComponent<'projection', typeof T.infer, {
     defaults: {
       type: 'both',
       value: '',
+      x: 0,
+      y: 0,
     },
     setup() {
       const container = document.createElementNS('http://www.w3.org/2000/svg', 'g')
