@@ -36,6 +36,8 @@ export const angle = defineComponent<'angle', typeof T.infer>((attrs) => {
       endSide: 10,
       startSideType: 'solid',
       endSideType: 'solid',
+      x: 0,
+      y: 0,
     },
     setup(children) {
       const container = document.createElementNS('http://www.w3.org/2000/svg', 'g')

@@ -16,7 +16,7 @@ export const edgePoint = defineComponent<
   }
 >((attrs, context) => {
   const { x, y, radius } = context
-  const { value, as } = attrs
+  const { value } = attrs
   const point = [
     x + radius * Math.cos(value.value),
     y + radius * Math.sin(value.value),
@@ -24,9 +24,13 @@ export const edgePoint = defineComponent<
   return {
     name: 'edge-points',
     attrs: EdgePointType,
-    globals: {
-      [as.value]: point,
-    },
+    globals: (() => {
+      if ('as' in attrs) {
+        return {
+          [attrs.as.value]: point,
+        }
+      }
+    })(),
   }
 })
 
@@ -42,12 +46,15 @@ export const origin = defineComponent<
     y: number
   }
 >((attrs, context) => {
-  const { as } = attrs
   return {
     name: 'origin',
     attrs: OriginType,
-    globals: {
-      [as.value]: [context.x, context.y],
-    },
+    globals: (() => {
+      if ('as' in attrs) {
+        return {
+          [attrs.as.value]: [context.x, context.y],
+        }
+      }
+    })(),
   }
 })

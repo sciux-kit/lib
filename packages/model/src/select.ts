@@ -18,6 +18,9 @@ export const select = defineComponent<'select', typeof SelectType.infer, Context
   return {
     name: 'select',
     attrs: SelectType,
+    defaults: {
+      disabled: false,
+    },
     setup: (children) => {
       const select = document.createElement('select')
       if (attrs.model) {
@@ -40,6 +43,10 @@ export const selectOption = defineComponent<'option', typeof SelectOptionType.in
   return {
     name: 'option',
     attrs: SelectOptionType,
+    defaults: {
+      disabled: false,
+      value: '__efault_select_option_value',
+    },
     setup: (children) => {
       option.value = toValue(attrs.value)
       option.selected = toValue(attrs.selected)

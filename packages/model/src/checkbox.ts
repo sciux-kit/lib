@@ -13,6 +13,9 @@ export default defineComponent<'checkbox', typeof T.infer, Context>((attrs, cont
   return {
     name: 'checkbox',
     attrs: T,
+    defaults: {
+      disabled: false,
+    },
     setup: () => {
       const input = document.createElement('input')
       input.type = 'checkbox'
