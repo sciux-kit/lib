@@ -91,5 +91,14 @@ export const origin = defineComponent<'origin', typeof InfoPointType.infer, {
       container.append(texElement)
       return container
     },
+    defaults: {
+      value: '',
+    },
+    setup() {
+      const container = document.createElementNS('http://www.w3.org/2000/svg', 'g')
+      const texElement = generateTexNode(attrs.value.value)
+      container.append(texElement)
+      return container
+    },
   }
 })
