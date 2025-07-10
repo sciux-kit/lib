@@ -1,0 +1,5 @@
+<canvas :width="200" :height="300" :origin="[100, 150]">
+  <plane :x="0" :y="0" :domain="[0, 10]" :range="[0, 12]" :division="15">
+    <dot label="(5, 7)" :x="5" :y="7" />
+  </plane>
+</canvas>

@@ -47,7 +47,7 @@ export const angleEndPoint = defineComponent<'end-point', typeof InfoPointType.i
   ]
   return {
     name: 'end-point',
-    attrs: InfoPointType,
+    attrs: InfoPointType，
     globals: (() => {
       if ('as' in attrs) {
         return {
@@ -82,6 +82,15 @@ export const origin = defineComponent<'origin', typeof InfoPointType.infer, {
         }
       }
     })(),
+    defaults: {
+      value: '',
+    },
+    setup() {
+      const container = document.createElementNS('http://www.w3.org/2000/svg', 'g')
+      const texElement = generateTexNode(attrs.value.value)
+      container.append(texElement)
+      return container
+    },
     defaults: {
       value: '',
     },
