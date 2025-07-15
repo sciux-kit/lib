@@ -15,7 +15,9 @@
     "test": "vitest",
     "typecheck": "tsc --noEmit",
     "prepare": "simple-git-hooks",
-    "preview": "pnpm vite ./test"
+    "preview": "pnpm vite ./test",
+    "playground": "pnpm vite ./playground",
+    "playground:build": "pnpm build"
   },
   "dependencies": {
     "mermaid": "^11.8.0",
