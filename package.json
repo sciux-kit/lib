@@ -18,7 +18,8 @@
     "preview": "pnpm vite ./test"
   },
   "dependencies": {
-    "mermaid": "^11.8.0"
+    "mermaid": "^11.8.0",
+    "monaco-editor": "^0.52.2"
   },
   "devDependencies": {
     "@antfu/eslint-config": "catalog:",
