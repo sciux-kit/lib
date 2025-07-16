@@ -16,7 +16,7 @@ const T = type({
   type: LineType,
 })
 
-export const circle = defineComponent<'circle', typeof T.infer>((attrs) => {
+export const circle = defineComponent<'circle', typeof T.infer, { division: number | undefined }>((attrs, ctx) => {
   const space = new Map()
   space.set('edge-point', edgePoint)
   space.set('origin', origin)
@@ -31,12 +31,13 @@ export const circle = defineComponent<'circle', typeof T.infer>((attrs) => {
       y: 0,
     },
     setup() {
+      const division = ctx.division ?? 1
       const container = document.createElementNS('http://www.w3.org/2000/svg', 'g')
-      container.setAttribute('transform', `translate(${attrs.x.value}, ${attrs.y.value})`)
+      container.setAttribute('transform', `translate(${attrs.x.value * division}, ${attrs.y.value * division})`)
       const path = document.createElementNS('http://www.w3.org/2000/svg', 'path')
       path.id = 'circle-path'
       container.id = 'canvas-circle'
-      path.setAttribute('d', describeArc([0, 0], attrs.radius.value, attrs.from.value, attrs.to.value))
+      path.setAttribute('d', describeArc([0, 0], attrs.radius.value * division, attrs.from.value, attrs.to.value))
       path.setAttribute('stroke', theme.pallete('primary'))
       path.setAttribute('fill', 'none')
       path.setAttribute('stroke-dasharray', resolveDasharray(attrs.type.value))
