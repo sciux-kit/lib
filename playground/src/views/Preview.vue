@@ -4,7 +4,7 @@ import { useRoute } from 'vue-router'
 import Sidebar from '../components/Sidebar.vue'
 import MonacoEditor from '../components/MonacoEditor.vue'
 import config from '../config/instance'
-import { activeContext, globals, reactive as sciuxReactive, render, applyTheme } from 'sciux'
+import { activeContext, globals, reactive as sciuxReactive, render, applyTheme, animationManager } from 'sciux'
 import init from 'sciux'
 
 const route = useRoute()
@@ -134,6 +134,7 @@ onMounted(() => {
   init()
   nextTick(() => {
     triggerManualRender()
+    animationManager.init()
   })
 })
 
@@ -142,6 +143,7 @@ const handleRenderRequest = (content: string) => {
   if (preview.value) {
     preview.value.innerHTML = ''
     const [ast, update] = render(content, preview.value)
+    animationManager.init()
   }
 }
 
@@ -170,6 +172,18 @@ const safeHtml = computed(() => {
   // 这里可以添加HTML清理逻辑，确保安全性
   return renderedHtml.value
 })
+
+watch(animationSettings, (settings) => {
+  console.log(settings)
+  if (settings.autoExecute) {
+    console.log(animationManager.getIn())
+    animationManager.enableAutoExecute()
+    animationManager.setAutoIn('creation', settings.duration)
+  }
+  else {
+    animationManager.disableAutoExecute()
+  }
+}, { deep: true, immediate: true })
 
 // 预定义的动画曲线选项
 const animationCurves = [
