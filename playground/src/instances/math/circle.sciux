@@ -1,3 +1,5 @@
-<canvas :width="300" :height="240" :origin="[150, 120]">
-  <circle :x="0" :y="0" :radius="100" :from="0" :to="120" type="dashed" />
+<canvas :width="200" :height="300" :origin="[100, 150]">
+  <plane :x="0" :y="0" :domain="[-10, 10]" :range="[-10, 10]" :division="10">
+    <circle :x="0" :y="0" :radius="10" />
+  </plane>
 </canvas>

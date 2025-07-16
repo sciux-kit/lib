@@ -4,5 +4,8 @@
     <parametric $="creation,1000,in-out-cubic" :domain="[-10, 10]" :range="[-10, 10]" :expr="(t) => [Math.cos(t) * (Math.exp(Math.cos(t)) - 2 * Math.cos(4 * t) - Math.pow(Math.sin(t / 12), 5)), Math.sin(t) * (Math.exp(Math.cos(t)) - 2 * Math.cos(4 * t) - Math.pow(Math.sin(t / 12), 5))]" />
     <projection :x="x" :y="y" type="both" :value="`\\left(${x.toFixed(1)}, ${y.toFixed(1)}\\right)`" $="creation,1000,in-out-cubic" />
     <vector :from="[0, 0]" :to="[x, y]" $="creation,1000,in-out-cubic" />
+    <vector :from="[0, 0]" :to="[-x, -y]" $="creation,1000,in-out-cubic" />
+    <circle :x="x" :y="y" :radius="1" />
+    <circle :x="2" :y="2" :radius="1" />
   </plane>
 </canvas>

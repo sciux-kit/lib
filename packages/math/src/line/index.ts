@@ -14,7 +14,7 @@ const T = type({
   type: LineType,
 })
 
-export const line = defineComponent<'line', typeof T.infer>((attrs, context) => {
+export const line = defineComponent<'line', typeof T.infer, { division: number | undefined }>((attrs, context) => {
   const space = new Map()
   space.set('start-point', lineStartPoint)
   space.set('end-point', lineEndPoint)
@@ -30,17 +30,22 @@ export const line = defineComponent<'line', typeof T.infer>((attrs, context) => 
     },
     attrs: T,
     setup(_children) {
+      const division = context.division ?? 1
       const container = document.createElementNS('http://www.w3.org/2000/svg', 'g')
       container.id = 'canvas-line'
+
+      const pos_from = { x: attrs.from.value[0] * division, y: attrs.from.value[1] * division }
+      const pos_to = { x: attrs.to.value[0] * division, y: attrs.to.value[1] * division }
+
       const path = document.createElementNS('http://www.w3.org/2000/svg', 'path')
-      path.setAttribute('d', `M ${attrs.from.value[0]} ${attrs.from.value[1]} L ${attrs.to.value[0]} ${attrs.to.value[1]}`)
+      path.setAttribute('d', `M ${pos_from.x} ${pos_from.y} L ${pos_to.x} ${pos_to.y}`)
       path.id = 'line-path'
       path.setAttribute('stroke', theme.pallete('primary'))
       path.setAttribute('stroke-dasharray', resolveDasharray(attrs.type.value))
       const texElement = generateTexNode(attrs.value?.value)
       const texPosition = [
-        attrs.from.value[0] + (attrs.to.value[0] - attrs.from.value[0]) / 2,
-        attrs.from.value[1] + (attrs.to.value[1] - attrs.from.value[1]) / 2,
+        pos_from.x + (pos_to.x - pos_from.x) / 2,
+        pos_from.y + (pos_to.y - pos_from.y) / 2,
       ]
       const texContainer = document.createElementNS('http://www.w3.org/2000/svg', 'g')
       texContainer.setAttribute('transform', `translate(${texPosition[0]}, ${texPosition[1]})`)

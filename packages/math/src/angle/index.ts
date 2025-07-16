@@ -21,7 +21,7 @@ const T = type({
   endSideValue: type.string.optional(),
 })
 
-export const angle = defineComponent<'angle', typeof T.infer>((attrs) => {
+export const angle = defineComponent<'angle', typeof T.infer, { division: number | undefined }>((attrs, context) => {
   const space = new Map()
   space.set('arc', arc)
   space.set('bounding', bounding)
@@ -40,16 +40,17 @@ export const angle = defineComponent<'angle', typeof T.infer>((attrs) => {
       y: 0,
     },
     setup(children) {
+      const division = context.division ?? 1
       const container = document.createElementNS('http://www.w3.org/2000/svg', 'g')
       container.id = 'canvas-angle'
-      container.setAttribute('transform', `translate(${attrs.x.value}, ${attrs.y.value})`)
+      container.setAttribute('transform', `translate(${attrs.x.value * division}, ${attrs.y.value * division})`)
       const resolve = (value: number, length: number): { x1: number, y1: number, x2: number, y2: number } => {
         const radian = value * Math.PI / 180
         return {
           x1: 0,
           y1: 0,
-          x2: length * Math.cos(radian),
-          y2: length * Math.sin(radian),
+          x2: length * Math.cos(radian) * division,
+          y2: length * Math.sin(radian) * division,
         }
       }
       const startSide = resolve(attrs.from.value, attrs.startSide.value)
