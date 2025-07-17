@@ -18,6 +18,7 @@ export const arc = defineComponent<'arc', typeof T.infer, {
   to: number
   startSide: number
   endSide: number
+  division: number | undefined
 }>((attrs, context) => {
   return {
     name: 'arc',
@@ -27,6 +28,7 @@ export const arc = defineComponent<'arc', typeof T.infer, {
       type: 'solid',
     },
     setup() {
+      const division = context.division ?? 1
       const container = document.createElementNS('http://www.w3.org/2000/svg', 'g')
       container.id = 'canvas-angle-arc'
       const angleValue = Math.abs((context.to - context.from + 360) % 360)
@@ -35,8 +37,8 @@ export const arc = defineComponent<'arc', typeof T.infer, {
         const length = Math.min(context.startSide ?? 0, context.endSide ?? 0) / 3
         const radFrom = context.from * Math.PI / 180
         const radTo = context.to * Math.PI / 180
-        const p1 = [length * Math.cos(radFrom), length * Math.sin(radFrom)]
-        const p2 = [length * Math.cos(radTo), length * Math.sin(radTo)]
+        const p1 = [length * Math.cos(radFrom) * division, length * Math.sin(radFrom) * division]
+        const p2 = [length * Math.cos(radTo) * division, length * Math.sin(radTo) * division]
         const line1 = document.createElementNS('http://www.w3.org/2000/svg', 'line')
         line1.setAttribute('x1', '0')
         line1.setAttribute('y1', '0')
@@ -53,8 +55,8 @@ export const arc = defineComponent<'arc', typeof T.infer, {
         line2.setAttribute('stroke', theme.pallete('primary'))
         line2.setAttribute('stroke-width', '1')
         line2.setAttribute('stroke-dasharray', resolveDasharray(attrs.type.value))
-        const l1 = [length * 0.6 * Math.cos(radFrom), length * 0.6 * Math.sin(radFrom)]
-        const l2 = [length * 0.6 * Math.cos(radTo), length * 0.6 * Math.sin(radTo)]
+        const l1 = [length * 0.6 * Math.cos(radFrom) * division, length * 0.6 * Math.sin(radFrom) * division]
+        const l2 = [length * 0.6 * Math.cos(radTo) * division, length * 0.6 * Math.sin(radTo) * division]
         const l3 = [l1[0] + (l2[0]), l1[1] + (l2[1])]
         const lPath = document.createElementNS('http://www.w3.org/2000/svg', 'path')
         lPath.setAttribute('d', `M ${l1[0]} ${l1[1]} L ${l3[0]} ${l3[1]} L ${l2[0]} ${l2[1]}`)
@@ -79,7 +81,7 @@ export const arc = defineComponent<'arc', typeof T.infer, {
       else {
         const path = document.createElementNS('http://www.w3.org/2000/svg', 'path')
         path.id = 'angle-arc'
-        path.setAttribute('d', describeArc([0, 0], Math.min(context.startSide ?? 0, context.endSide ?? 0) / 3, context.from, context.to))
+        path.setAttribute('d', describeArc([0, 0], Math.min(context.startSide ?? 0, context.endSide ?? 0) / 3 * division, context.from, context.to))
         path.setAttribute('stroke', theme.pallete('primary'))
         path.setAttribute('fill', 'none')
         path.setAttribute('stroke-dasharray', resolveDasharray(attrs.type.value))
@@ -87,8 +89,8 @@ export const arc = defineComponent<'arc', typeof T.infer, {
         const length = Math.min(context.startSide ?? 0, context.endSide ?? 0) / 3
         const angle = context.from + (context.to - context.from) / 2
         const position = [
-          length * Math.cos(angle * Math.PI / 180),
-          length * Math.sin(angle * Math.PI / 180),
+          length * Math.cos(angle * Math.PI / 180) * division,
+          length * Math.sin(angle * Math.PI / 180) * division,
         ]
         const texContainer = document.createElementNS('http://www.w3.org/2000/svg', 'g')
         texContainer.setAttribute('transform', `translate(${position[0]}, ${position[1]})`)

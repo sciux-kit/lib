@@ -2,7 +2,13 @@
   <plane :x="0" :y="0" :division="25" :domain="[-10, 10]" :range="[-5, 5]" :x-label="count => count.toString()" :y-label="count => count.toString()" $="creation,500,in-out-cubic">
     <function $="creation,1000,linear" :domain="[-10, 10]" :expr="(x) => Math.cos(x)" />
     <line :from="[3, 2]" :to="[4, 1]" />
-    <angle :x="1" :y="1" :from="0" :to="120" :start-side="100" :end-side="100">
+    <angle :x="1" :y="-2" :from="0" :to="120" :start-side="5" :end-side="5">
+      <bounding type="dashed" value="R = 2r" />
+      <arc type="dashed" value="120" />
+      <start-point as="A" />
+      <end-point as="B" />
+    </angle>
+    <angle :x="-7.5" :y="-2.5" :from="0" :to="90" :start-side="5" :end-side="5">
       <bounding type="dashed" value="R = 2r" />
       <arc type="dashed" value="120" />
       <start-point as="A" />
