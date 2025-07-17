@@ -18,6 +18,7 @@ export const bounding = defineComponent<'bounding', typeof T.infer, {
   to: number
   startSide?: number
   endSide: number
+  division: number | undefined
 }>((attrs, context) => {
   return {
     name: 'bounding',
@@ -27,9 +28,10 @@ export const bounding = defineComponent<'bounding', typeof T.infer, {
       value: '',
     },
     setup() {
+      const division = context.division ?? 1
       const container = document.createElementNS('http://www.w3.org/2000/svg', 'g')
       container.id = 'canvas-bounding'
-      const pathString = describeArc([context.x, context.y], context.startSide ?? context.endSide, context.from, context.to)
+      const pathString = describeArc([0, 0], (context.startSide ?? context.endSide) * division, context.from, context.to)
       const path = document.createElementNS('http://www.w3.org/2000/svg', 'path')
       path.setAttribute('d', pathString)
       path.setAttribute('stroke-width', '1')
@@ -37,7 +39,7 @@ export const bounding = defineComponent<'bounding', typeof T.infer, {
       path.setAttribute('fill', 'none')
       path.setAttribute('stroke-dasharray', resolveDasharray(attrs.type.value))
       const texElement = generateTexNode(attrs.value?.value)
-      const length = context.startSide ?? context.endSide
+      const length = (context.startSide ?? context.endSide) * division
       const angle = context.from + (context.to - context.from) / 2
       const position = [
         length * Math.cos(angle * Math.PI / 180),
